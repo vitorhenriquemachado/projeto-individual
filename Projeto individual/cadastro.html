@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style/login.css">
+    <link rel="stylesheet" href="style/cadastro.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+
 
 </head>
 <body>
@@ -15,16 +16,16 @@
         </div>
 
         <div class="caixa">
-            <h1>Faça seu login</h1>
+            <h1>Faça seu cadastro</h1>
 
             <div class="campos">
+                <input type="text" placeholder="Insira seu nome" id="ipt_nome">
                 <input type="text" placeholder="Insira seu e-mail" id="ipt_login">
                 <input type="password" placeholder="Insira sua senha" id="ipt_senha">
-                <div class="esqueci"><p>Esqueci minha senha</p></div>
+                <input type="text" placeholder="Insira sua data de nascimento (Ano-Mês-Dia)" id="ipt_dtNasc">
                 <div class="botao">
-                <button onclick="logar()">ENTRAR</button>
+                <button onclick="cadastrar()"><a href="login.html" class="link">CADASTRAR</a></button>
                 </div>
-                <div class="naoTem"><p><a href="cadastro.html" class="link">Ainda não tenho uma conta</a></p></div>
             </div>
         </div>
     </div>

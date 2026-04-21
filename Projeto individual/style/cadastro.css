@@ -29,9 +29,10 @@ body {
     height: 70vh;
     margin: 0 auto;
     background-color: black;
-    
+   
   
 }
+
 
 
 .logo img {
@@ -92,15 +93,18 @@ button{
     border: 2px solid white;
     transition: all 2s;
     
+    
+}
+button a{
+    text-decoration: none;
+    color: white;
 }
 button:hover{
-    color: red;
     transform: scale(1.1);
     border: 2px solid transparent;
     background: 
     linear-gradient(black, black) padding-box, 
     linear-gradient(to right, red, black,white) border-box; 
-    cursor: pointer;
 
     
 }
@@ -111,7 +115,6 @@ button:hover{
     margin-bottom: 20px;
     font-size: small;
     transition: all 2s;
-    cursor: pointer;
 }
 .esqueci:hover{
     transform: scale(1.1);
@@ -121,19 +124,10 @@ button:hover{
     justify-content: center;
     margin-top: 20px;
     transition: all 2s;
-    
 }
 .naoTem:hover{
     transform: scale(1.1);
-    
-    
-}
-.naoTem a{
-    text-decoration: none;
-    color: white;
-    
 }
 .link:hover{
-   color: red;
-   
+    color: red;
 }
