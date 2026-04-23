@@ -17,6 +17,117 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
 }
+header {
+    position:fixed;
+    width: 100%;
+    background-color:black;
+    box-shadow: 1px 1px  rgb(255, 255, 255);
+    height: 15%;
+    z-index: 1;
+    top:0;   
+    
+    
+   
+}
+
+nav ul {
+    display: flex;
+    width: 60%;
+    align-items: center;
+    gap:40px;
+    list-style: none;
+    padding: 0;
+
+}
+
+
+.componentes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+   
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    font-weight: 900;
+    align-items: center;
+
+    
+}
+
+.link1 {
+    display: inline-block;
+    transition: 0.3s;
+}
+
+.link1:hover {
+    color: red;
+    transform: scale(1.2);
+
+
+}
+
+.link2 {
+    display: inline-block;
+    transition: 0.3s;
+}
+
+.link2:hover {
+    color: red;
+    transform: scale(1.2);
+}
+
+.link3 {
+    display: inline-block;
+    transition: 0.3s;
+}
+
+.link3:hover {
+    color: red;
+    transform: scale(1.2);
+}
+
+.link4 {
+    display: inline-block;
+    transition: 0.3s;
+}
+
+.link4:hover {
+    color: red;
+    transform: scale(1.2);
+}
+.link5 {
+    display: inline-block;
+    transition: 0.3s;
+}
+
+.link5:hover {
+    color: red;
+    transform: scale(1.2);
+}
+.link6 {
+    display: inline-block;
+    transition: 0.3s;
+}
+
+.link6:hover {
+    color: red;
+    transform: scale(1.2);
+}
+li img{
+    width: 80px;
+}
+.imagem img{
+    display: flex;
+    width: 73%;
+    align-items: center;
+    opacity: 70%;
+    border-radius: 12px;
+    box-shadow: 10px 10px 10px 10px rgb(0, 0, 0);    
+}
 
 
 .container {
@@ -26,11 +137,10 @@ body {
     gap: 20px;
     box-shadow: 10px 10px 10px 10px rgb(0, 0, 0);
     width: 35%;
-    height: 100vh;
-    margin: 0 auto;
+    height: 60vh;
+    margin: 0.5em auto;
     background-color: black;
-    
-  
+     
 }
 
 
