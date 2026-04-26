@@ -1,0 +1,453 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    
+}
+
+body {
+    background-color: black;
+    height: 100vh;
+    color: white;
+}
+
+
+header {
+    position:fixed;
+    width: 100%;
+    background-color:black;
+    box-shadow: 1px 1px  rgb(255, 255, 255);
+    height: 15%;
+    z-index: 1;
+    top:0;   
+    
+    
+   
+}
+
+nav ul {
+    display: flex;
+    width: 60%;
+    align-items: center;
+    gap:40px;
+    list-style: none;
+    padding: 0;
+
+}
+
+
+.componentes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+   
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    font-weight: 900;
+    align-items: center;
+
+    
+}
+
+.link1 {
+    display: inline-block;
+    transition: 0.3s;
+}
+
+.link1:hover {
+    color: red;
+    transform: scale(1.2);
+
+
+}
+
+.link2 {
+    display: inline-block;
+    transition: 0.3s;
+}
+
+.link2:hover {
+    color: red;
+    transform: scale(1.2);
+}
+
+.link3 {
+    display: inline-block;
+    transition: 0.3s;
+}
+
+.link3:hover {
+    color: red;
+    transform: scale(1.2);
+}
+
+.link4 {
+    display: inline-block;
+    transition: 0.3s;
+}
+
+.link4:hover {
+    color: red;
+    transform: scale(1.2);
+}
+.link5 {
+    display: inline-block;
+    transition: 0.3s;
+}
+
+.link5:hover {
+    color: red;
+    transform: scale(1.2);
+}
+.link6 {
+    display: inline-block;
+    transition: 0.3s;
+}
+
+.link6:hover {
+    color: red;
+    transform: scale(1.2);
+}
+li img{
+    width: 80px;
+}
+
+
+
+.carrossel {
+    width: 60%;
+    overflow-x: auto;
+    margin: 3em auto;
+    display: flex;
+    position: relative;
+    top: 60px;
+    scroll-behavior:smooth;
+    anchor-name: --carrossel;
+    scroll-snap-type: x mandatory;
+
+
+}
+
+.carrossel::-webkit-scrollbar {
+    display: none;
+}
+
+.carrossel::scroll-button(right),
+.carrossel::scroll-button(left) {
+    content: '🠖';
+    border: none;
+    background-color: black;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 2rem;
+    color: white;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    padding-bottom: .1em;
+    cursor: pointer;
+    position: fixed;
+    position-anchor: --carrossel;
+    position-area: right center;
+    translate: -50%;
+    transition: all 0.3s;
+}
+
+.carrossel::scroll-button(left) {
+    content: '🠔';
+    position-area: left center;
+    translate: 50%;
+}
+
+.carrossel::scroll-button(right):disabled,
+.carrossel::scroll-button(left):disabled {
+    opacity: 0.5;
+    cursor: auto;
+}
+
+.carrossel::scroll-button(right):hover,
+.carrossel::scroll-button(left):hover {
+    transform: scale(1.05);
+}
+
+.card {
+    scroll-snap-align: start;
+    flex: 0 0 100%;
+    padding: 1em;
+    border-radius: .5em;
+    align-content: center;
+    object-fit: cover;
+    overflow: hidden;
+
+
+}
+
+.card img {
+    width: 100%;
+    transition: all 0.3s;
+    border-radius: 10px;
+
+}
+
+.card img:hover {
+    transform: scale(1.05);
+}
+
+
+.container {
+    display: flex;
+    align-items: flex-start;
+    gap: 50px;
+    padding: 40px;
+    color: white;
+
+}
+
+.container h1 {
+    margin-left: 25%;
+    margin-top: 2%;
+    font-size: x-large;
+    font-weight: 900;
+    letter-spacing: 1px;
+    transition: all 2s;
+    margin-bottom: 1%;
+
+
+}
+.lado{
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.container h1:hover {
+    transform: scale(1.05)
+}
+
+.container img{
+    cursor: pointer;
+    transition: all 0.3s;
+    border-radius: 10px;
+    width: 650px;
+}
+
+.container img:hover {
+    transform: scale(1.05);
+}
+
+.historia {
+    display: flex;
+    color: white;
+    flex-direction: column;
+    max-width: 1000px;
+    margin-top: 5%;   
+}
+
+.historia h2 {
+    margin-bottom: 2%;
+    font-weight: 900;
+   
+}
+
+
+.rebaixamento {
+    display: flex;
+    align-items: flex-start;
+    gap: 50px;
+    padding: 40px;
+    color: white;
+
+}
+.rebaixamento h1{
+    margin-left: 28%;
+    margin-top: 2%;
+    font-size: x-large;
+    font-weight: 900;
+    letter-spacing: 1px;
+    transition: all 0.3s;
+    margin-bottom: 1%;
+}
+.rebaixamento h1:hover {
+    transform: scale(1.05)
+}
+.rebaixamento img{
+    cursor: pointer;
+    transition: all 0.3s;
+    width: 615px;
+    border-radius: 10px;
+}
+
+.lado1{
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s;
+}
+.lado1 img:hover{
+ transform: scale(1.05);
+}
+.rebaixamento-historia{
+    display: flex;
+    color: white;
+    flex-direction: column;
+    max-width: 1000px;
+    margin-top: 5%;   
+}
+.rebaixamento-historia h2{
+    margin-bottom: 2%;
+    font-weight: 900;
+}
+
+.redencao {
+    display: flex;
+    align-items: flex-start;
+    gap: 50px;
+    padding: 40px;
+    color: white;
+
+}
+.redencao h1{
+    margin-left: 28%;
+    margin-top: 2%;
+    font-size: x-large;
+    font-weight: 900;
+    letter-spacing: 1px;
+    transition: all 0.3s;
+    margin-bottom: 1%;
+}
+.redencao h1:hover {
+    transform: scale(1.05)
+}
+.redencao img{
+    cursor: pointer;
+    transition: all 0.3s;
+    width: 615px;
+    border-radius: 10px;
+}
+
+.lado2{
+    display: flex;
+    flex-direction: column;
+   
+}
+.lado2 img:hover{
+ transform: scale(1.05);
+}
+.redencao-historia{
+    display: flex;
+    color: white;
+    flex-direction: column;
+    max-width: 1000px;
+    margin-top: 5%;   
+}
+.redencao-historia h2{
+    margin-bottom: 2%;
+    font-weight: 900;
+   
+}
+
+.titulos{
+    display: flex;
+    justify-content: center;
+    
+}
+.titulos h1{
+    margin-top: 2%;
+    font-weight: 900;
+    transition: all 0.3s;
+}
+.titulos h1:hover{
+transform: scale(1.05) 
+}
+.tacas {
+    width: 60%;
+    overflow-x: auto;
+    margin: 3em auto;
+    display: flex;
+    scroll-behavior: smooth;
+    anchor-name: --tacas;
+    scroll-snap-type: x mandatory;
+    
+
+
+}
+
+.tacas::-webkit-scrollbar {
+    display: none;
+}
+
+.tacas::scroll-button(right),
+.tacas::scroll-button(left) {
+    content: '🠖';
+    border: none;
+    background-color: gold;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 3rem;
+    color: black;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    padding-bottom: .1em;
+    cursor: pointer;
+    position: fixed;
+    position-anchor: --tacas;
+    position-area: right center;
+    translate: -50%;
+    transition: all 2s;
+}
+
+.tacas::scroll-button(left) {
+    content: '🠔';
+    position-area: left center;
+    translate: 50%;
+    color: black;
+}
+
+.tacas::scroll-button(right):disabled,
+.tacas::scroll-button(left):disabled {
+    opacity: 0.5;
+    cursor: auto;
+}
+
+.tacas::scroll-button(right):hover,
+.tacas::scroll-button(left):hover {
+    transform: scale(1.2);
+}
+
+.card1 {
+    scroll-snap-align: start;
+    flex: 0 0 100%;
+    padding: 1em;
+    border-radius: .5em;
+    align-content: center;
+    object-fit: cover;
+    overflow: hidden;
+
+
+}
+
+.card1 img {
+    width: 300px;
+    transition: all 0.3s;
+    border-radius: 10px;
+   
+
+}
+.card1 h2{
+    margin-left: 40%;
+}
+.card1 h1{
+    display: flex;
+    justify-content: center;
+    transition: all 0.3s;
+}
+.card1 h1:hover{
+    transform: scale(1.05);
+}
+
+.card1 img:hover {
+    transform: scale(1.05);
+}

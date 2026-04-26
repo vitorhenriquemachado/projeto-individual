@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <script src="./js/sessao.js"></script>
+    <link rel="stylesheet" href="./css/login.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    
+
+</head>
+<body>
+       <header>
+         
+        <div class="componentes">
+            <nav>
+                <ul>
+                    <li><a href="#" class="link1">HOME</a></li>
+                    <li><a href="#" class="link2">HISTÓRIA</a></li>
+                    <li><a href="#" class="link3">TITULOS</a></li>
+                    <li><img src="./assets/corinthians.94597c2d.png" alt="Logo Corinthians"></li>
+                    <li><a href="#" class="link4">ELENCO</a></li>
+                    <li><a href="#" class="link5">QUIZ</a></li>
+                    <li><a href="login.html" class="link6">LOGIN</a></li>
+                </ul>
+            </nav>
+        </div>
+
+
+    </header>
+
+
+    <div class="container">
+        
+        <div class="logo">
+            <img src="./assets/corinthians.94597c2d.png">
+        </div>
+       
+
+        <div class="caixa">
+            <h1>Faça seu login</h1>
+
+            <div class="campos">
+                <input type="text" placeholder="Insira seu e-mail" id="ipt_login">
+                <input type="password" placeholder="Insira sua senha" id="ipt_senha">
+                <div class="esqueci"><p>Esqueci minha senha</p></div>
+                <div class="botao">
+                <button onclick="logar()">ENTRAR</button>
+                </div>
+                <div class="naoTem"><p><a href="cadastro.html" class="link">Ainda não tenho uma conta</a></p></div>
+            </div>
+        </div>
+       
+    </div>
+     <div class="imagem">
+            <img src="./assets/socrates.jpg" alt="">
+        </div>
+     
+</body>
+</html>
+<script>
+
+     function logar() {
+        aguardar();
+
+        let emailVar = ipt_login.value;
+        let senhaVar = ipt_senha.value;
+
+        if (emailVar == "" || senhaVar == "") {
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+            finalizarAguardar();
+            return false;
+        }
+        else {
+            setInterval(sumirMensagem, 5000)
+        }
+
+        console.log("FORM LOGIN: ", emailVar);
+        console.log("FORM SENHA: ", senhaVar);
+
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailServer: emailVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.ID_USUARIO = json.id;
+                    setTimeout(function () {
+                        window.location = "";
+                    }, 1000); // apenas para exibir o loading
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar realizar o login!");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    finalizarAguardar(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+    }
+
+    function sumirMensagem() {
+        cardErro.style.display = "none"
+    }
+
+
+</script>
