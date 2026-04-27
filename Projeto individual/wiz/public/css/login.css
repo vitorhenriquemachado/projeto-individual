@@ -255,3 +255,33 @@ button:hover{
    color: red;
    
 }
+
+.card_erro {
+  display: none;
+  background-color: #fff;
+  color: black;
+  width: 260px;
+  position: fixed;
+  border-radius: 4px;
+  border: gray 3px solid;
+  padding: 10px;
+  bottom: 20%;
+  text-align: center;
+}
+
+.card_erro #mensagem_erro{
+  font-weight: 500;
+  font-size: 15px;
+}
+#div_erros_login{
+display: none;
+  background-color: #fff;
+  color: black;
+  width: 260px;
+  position: fixed;
+  border-radius: 4px;
+  border: gray 3px solid;
+  padding: 10px;
+  bottom: 20%;
+  text-align: center;
+}

@@ -9,7 +9,6 @@ function validarSessao() {
 
     if (email != null && nome != null) {
         b_usuario.innerHTML = nome;
-        b_cpf.innerHTML = cpf;
     } else {
         window.location = "../login.html";
     }
@@ -34,6 +33,7 @@ function finalizarAguardar(texto) {
     if (texto) {
         divErrosLogin.style.display = "flex";
         divErrosLogin.innerHTML = texto;
+        setInterval(sumirMensagem, 1000);
     }
 }
 

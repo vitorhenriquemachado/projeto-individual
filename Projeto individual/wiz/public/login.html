@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-     <script src="./js/sessao.js"></script>
+    <script src="./js/sessao.js"></script>
     <link rel="stylesheet" href="./css/login.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
-    
+
 
 </head>
+
 <body>
-       <header>
-         
+    <header>
+
         <div class="componentes">
             <nav>
                 <ul>
@@ -32,11 +34,11 @@
 
 
     <div class="container">
-        
+
         <div class="logo">
             <img src="./assets/corinthians.94597c2d.png">
         </div>
-       
+
 
         <div class="caixa">
             <h1>Faça seu login</h1>
@@ -44,24 +46,40 @@
             <div class="campos">
                 <input type="text" placeholder="Insira seu e-mail" id="ipt_login">
                 <input type="password" placeholder="Insira sua senha" id="ipt_senha">
-                <div class="esqueci"><p>Esqueci minha senha</p></div>
-                <div class="botao">
-                <button onclick="logar()">ENTRAR</button>
+                <div class="esqueci">
+                    <p>Esqueci minha senha</p>
                 </div>
-                <div class="naoTem"><p><a href="cadastro.html" class="link">Ainda não tenho uma conta</a></p></div>
+                <div class="botao">
+                    <button onclick="logar()">ENTRAR</button>
+                </div>
+                <div class="naoTem">
+                    <p><a href="cadastro.html" class="link">Ainda não tenho uma conta</a></p>
+                </div>
             </div>
+
+            <div id="div_aguardar" class="loading-div">
+                <img src="" id="loading-gif">
+            </div>
+
         </div>
-       
+        <div id="div_erros_login"></div>
+
+        <div class="card_erro" id="cardErro">
+            <span id="mensagem_erro"></span>
+        </div>
+
+
     </div>
-     <div class="imagem">
-            <img src="./assets/socrates.jpg" alt="">
-        </div>
-     
+    <div class="imagem">
+        <img src="./assets/socrates.jpg" alt="">
+    </div>
+
 </body>
+
 </html>
 <script>
 
-     function logar() {
+    function logar() {
         aguardar();
 
         let emailVar = ipt_login.value;
@@ -69,12 +87,12 @@
 
         if (emailVar == "" || senhaVar == "") {
             cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+            mensagem_erro.innerHTML = "Insira os dados no campo";
             finalizarAguardar();
             return false;
         }
         else {
-            setInterval(sumirMensagem, 5000)
+            setInterval(sumirMensagem, 1000)
         }
 
         console.log("FORM LOGIN: ", emailVar);
@@ -90,7 +108,7 @@
                 senhaServer: senhaVar
             })
         }).then(function (resposta) {
-            console.log("ESTOU NO THEN DO entrar()!")
+            console.log("ESTOU NO THEN DO logar()!")
 
             if (resposta.ok) {
                 console.log(resposta);
@@ -100,7 +118,7 @@
                     console.log(JSON.stringify(json));
                     sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.NOME_USUARIO = json.nome;
-                    sessionStorage.ID_USUARIO = json.id;
+                    sessionStorage.ID_USUARIO = json.idUsuario;
                     setTimeout(function () {
                         window.location = "";
                     }, 1000); // apenas para exibir o loading
@@ -126,6 +144,8 @@
 
     function sumirMensagem() {
         cardErro.style.display = "none"
+        div_erros_login.style.display = "none"
+
     }
 
 
