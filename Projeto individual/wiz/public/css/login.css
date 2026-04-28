@@ -145,7 +145,7 @@ li img:hover{
     gap: 20px;
     box-shadow: 10px 10px 10px 10px rgb(0, 0, 0);
     width: 35%;
-    height: 60vh;
+    height: auto;
     margin: 0.5em auto;
     background-color: black;
      
@@ -265,7 +265,7 @@ button:hover{
   border-radius: 4px;
   border: gray 3px solid;
   padding: 10px;
-  bottom: 20%;
+  bottom: 16%;
   text-align: center;
 }
 
