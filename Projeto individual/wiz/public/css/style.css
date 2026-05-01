@@ -75,12 +75,13 @@ li img:hover {
 
 
 .carrossel {
-    width: 60%;
+    width: 100%;
+    max-width: 1000px;
     overflow-x: auto;
     margin: 3em auto;
     display: flex;
     position: relative;
-    top: 60px;
+    top: 100px;
     scroll-behavior: smooth;
     anchor-name: --carrossel;
     scroll-snap-type: x mandatory;
@@ -159,6 +160,7 @@ li img:hover {
     gap: 50px;
     padding: 40px;
     color: white;
+    margin-top: 150px;
 
 }
 
@@ -346,7 +348,8 @@ li img:hover {
 }
 
 .tacas {
-    width: 60%;
+    width: 100%;
+    max-width: 700px;
     overflow-x: auto;
     margin: 3em auto;
     display: flex;
@@ -366,7 +369,7 @@ li img:hover {
 .tacas::scroll-button(left) {
     content: '🠖';
     border: none;
-    background-color: gold;
+    background-color: white;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 3rem;
     color: black;
@@ -422,13 +425,14 @@ li img:hover {
 }
 
 .card1 h2 {
-    margin-left: 40%;
+    margin-left: 170px;
 }
 
 .card1 h1 {
     display: flex;
     justify-content: center;
     transition: all 0.3s;
+    
 }
 
 .card1 h1:hover {
@@ -438,6 +442,85 @@ li img:hover {
 .card1 img:hover {
     transform: scale(1.05);
 }
+
+.elencoH{
+    display: flex;
+    justify-content: center;
+   
+}
+.elencoH h1{
+     margin-top: 2%;
+    font-weight: 900;
+    transition: all 0.3s;
+}
+.elencoH h1:hover{
+    transform: scale(1.05);
+}
+
+.elenco{
+    width: 100%;
+    max-width: 800px;
+    overflow-x: auto;
+    margin: 3em auto;
+    display: flex;
+    scroll-behavior: smooth;
+    anchor-name: --elenco;
+    scroll-snap-type: x mandatory;
+
+}
+.elenco img {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    transition: all 0.3s;
+    border-radius: 10px;
+    margin-left: 80px;
+
+
+}
+
+.elenco::-webkit-scrollbar {
+    display: none;
+}
+
+.elenco::scroll-button(right),
+.elenco::scroll-button(left) {
+    content: '🠖';
+    border: none;
+    background-color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 3rem;
+    color: black;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    padding-bottom: .1em;
+    cursor: pointer;
+    position: fixed;
+    position-anchor: --elenco;
+    position-area: right center;
+    translate: -50%;
+    transition: all 2s;
+}
+
+.elenco::scroll-button(left) {
+    content: '🠔';
+    position-area: left center;
+    translate: 50%;
+    color: black;
+}
+
+.elenco::scroll-button(right):disabled,
+.elenco::scroll-button(left):disabled {
+    opacity: 0.5;
+    cursor: auto;
+}
+
+.elenco::scroll-button(right):hover,
+.elenco::scroll-button(left):hover {
+    transform: scale(1.2);
+}
+
 
 
 @media (max-width: 1024px) {
@@ -472,7 +555,8 @@ li img:hover {
     }
 
     .carrossel,
-    .tacas {
+    .tacas,
+    .elenco {
         width: 95%;
     }
 }
