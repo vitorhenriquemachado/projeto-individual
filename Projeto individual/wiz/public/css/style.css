@@ -18,7 +18,7 @@ header {
     width: 100%;
     background-color: black;
     box-shadow: 1px 1px rgb(255, 255, 255);
-    height: 130px;
+    height: 110px;
     z-index: 1;
     top: 0;
 
@@ -70,9 +70,6 @@ li img {
 li img:hover {
     transform: scale(1.1);
 }
-
-
-
 
 .carrossel {
     width: 100%;
@@ -172,7 +169,7 @@ li img:hover {
     font-size: x-large;
     font-weight: 900;
     letter-spacing: 1px;
-    transition: all 2s;
+    transition: all 0.3s;
     margin-bottom: 1%;
 
 
@@ -307,7 +304,7 @@ li img:hover {
 
 .lado2 {
     display: flex;
-    
+
     min-width: 300px;
     flex-direction: column;
 
@@ -383,7 +380,7 @@ li img:hover {
     position-anchor: --tacas;
     position-area: right center;
     translate: -50%;
-    transition: all 2s;
+    transition: all 0.3s;
 }
 
 .tacas::scroll-button(left) {
@@ -433,7 +430,7 @@ li img:hover {
     display: flex;
     justify-content: center;
     transition: all 0.3s;
-    
+
 }
 
 .card1 h1:hover {
@@ -444,21 +441,23 @@ li img:hover {
     transform: scale(1.05);
 }
 
-.elencoH{
+.elencoH {
     display: flex;
     justify-content: center;
-   
+
 }
-.elencoH h1{
-     margin-top: 2%;
+
+.elencoH h1 {
+    margin-top: 2%;
     font-weight: 900;
     transition: all 0.3s;
 }
-.elencoH h1:hover{
+
+.elencoH h1:hover {
     transform: scale(1.05);
 }
 
-.elenco{
+.elenco {
     width: 100%;
     max-width: 800px;
     overflow-x: auto;
@@ -469,6 +468,7 @@ li img:hover {
     scroll-snap-type: x mandatory;
 
 }
+
 .elenco img {
     width: 100%;
     max-width: 600px;
@@ -501,7 +501,7 @@ li img:hover {
     position-anchor: --elenco;
     position-area: right center;
     translate: -50%;
-    transition: all 2s;
+    transition: all 0.3s;
 }
 
 .elenco::scroll-button(left) {
@@ -521,10 +521,65 @@ li img:hover {
 .elenco::scroll-button(left):hover {
     transform: scale(1.2);
 }
+footer {
+    background-color: rgb(26, 25, 25);
+    color: #fff;
+    display: flex;
+    font-size: 15px;
+    margin-top: 60px;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.footerContainer {
+    display: flex;
+    gap: 60px;
+    margin-top: 40px;
+}
+
+.footerLogo img {
+    width: 100%;
+    max-width: 40px;
+    transition: all 0.3s;
+}
+
+.footerLogo img:hover {
+    transform: scale(1.05);
+}
+
+.links {
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
+}
+
+.links a {
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s;
+
+
+
+}
+
+.links a:hover {
+    color: red;
+    transform: scale(1.05);
+}
+
+.version {
+    text-align: center;
+    padding-top: 10px;
+    font-size: 14px;
+
+
+}
 
 
 
 @media (max-width: 1024px) {
+
     .container,
     .rebaixamento,
     .redencao {
@@ -560,6 +615,12 @@ li img:hover {
     .elenco {
         width: 95%;
     }
+
+    .footerContainer {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+    }
 }
 
 @media (max-width: 480px) {
@@ -586,4 +647,10 @@ li img:hover {
     h2 {
         font-size: 16px;
     }
+
+    footer {
+        height: auto;
+        padding: 10px 0;
+    }
 }
+
