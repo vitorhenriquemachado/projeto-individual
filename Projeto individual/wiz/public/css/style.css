@@ -1,0 +1,872 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+
+}
+
+body {
+    background-color: black;
+    min-height: 100vh;
+    color: white;
+}
+
+
+header {
+    position: fixed;
+    width: 100%;
+    background-color: black;
+    box-shadow: 1px 1px rgb(255, 255, 255);
+    height: 110px;
+    z-index: 1;
+    top: 0;
+
+
+
+}
+
+nav ul {
+    display: flex;
+    width: 60%;
+    align-items: center;
+    gap: 40px;
+    list-style: none;
+    padding: 0;
+
+}
+
+
+.componentes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    font-weight: 900;
+    align-items: center;
+    display: inline-block;
+    transition: all 0.3s;
+}
+
+nav a:hover {
+    color: red;
+    transform: scale(1.2);
+
+
+}
+
+li img {
+    width: 80px;
+    transition: all 0.3s;
+
+}
+
+li img:hover {
+    transform: scale(1.1);
+}
+
+.carrossel {
+    width: 95%;
+    max-width: 2200px;
+    max-height: 800px;
+    overflow-x: auto;
+    margin: auto;
+    display: flex;
+    position: relative;
+    top: 100px;
+    scroll-behavior: smooth;
+    anchor-name: --carrossel;
+    scroll-snap-type: x mandatory;
+
+
+}
+
+.carrossel::-webkit-scrollbar {
+    display: none;
+}
+
+.carrossel::scroll-button(right),
+.carrossel::scroll-button(left) {
+    content: '🠖';
+    border: none;
+    background-color: black;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 2rem;
+    color: white;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    padding-bottom: .1em;
+    cursor: pointer;
+    position: fixed;
+    position-anchor: --carrossel;
+    position-area: right center;
+    translate: -50%;
+    transition: all 0.3s;
+}
+
+.carrossel::scroll-button(left) {
+    content: '🠔';
+    position-area: left center;
+    translate: 50%;
+}
+
+.carrossel::scroll-button(right):disabled,
+.carrossel::scroll-button(left):disabled {
+    opacity: 0.5;
+    cursor: auto;
+}
+
+.carrossel::scroll-button(right):hover,
+.carrossel::scroll-button(left):hover {
+    transform: scale(1.05);
+}
+
+.card {
+    scroll-snap-align: start;
+    flex: 0 0 100%;
+    padding: 1em;
+    border-radius: .5em;
+    align-content: center;
+    object-fit: cover;
+    overflow: hidden;
+
+
+}
+
+.card img {
+    width: 100%;
+    transition: all 0.3s;
+    border-radius: 10px;
+
+}
+
+.card img:hover {
+    transform: scale(1.05);
+}
+
+
+.container {
+    display: flex;
+    align-items: flex-start;
+    gap: 50px;
+    padding: 40px;
+    color: white;
+    margin-top: 150px;
+
+}
+
+.container h1 {
+    width: 100%;
+    text-align: center;
+    margin-top: 2%;
+    font-size: x-large;
+    font-weight: 900;
+    letter-spacing: 1px;
+    transition: all 0.3s;
+    margin-bottom: 1%;
+
+
+}
+
+.lado {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.container h1:hover {
+    transform: scale(1.05)
+}
+
+.container img {
+    cursor: pointer;
+    transition: all 0.3s;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 650px;
+}
+
+.container img:hover {
+    transform: scale(1.05);
+}
+
+.historia {
+    display: flex;
+    color: white;
+    flex-direction: column;
+    max-width: 800px;
+    margin-top: 5%;
+}
+
+.historia h2 {
+    margin-bottom: 2%;
+    font-weight: 900;
+
+}
+
+
+.rebaixamento {
+    display: flex;
+    align-items: flex-start;
+    gap: 50px;
+    padding: 40px;
+    color: white;
+
+}
+
+.rebaixamento h1 {
+    width: 100%;
+    text-align: center;
+    margin-top: 2%;
+    font-size: x-large;
+    font-weight: 900;
+    letter-spacing: 1px;
+    transition: all 0.3s;
+    margin-bottom: 1%;
+}
+
+.rebaixamento h1:hover {
+    transform: scale(1.05)
+}
+
+.rebaixamento img {
+    cursor: pointer;
+    transition: all 0.3s;
+    width: 100%;
+    max-width: 615px;
+    border-radius: 10px;
+}
+
+.lado1 {
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s;
+}
+
+.lado1 img:hover {
+    transform: scale(1.05);
+}
+
+.rebaixamento-historia {
+    display: flex;
+    flex: 1;
+    color: white;
+    flex-direction: column;
+    max-width: 800px;
+    margin-top: 5%;
+}
+
+.rebaixamento-historia h2 {
+    margin-bottom: 2%;
+    font-weight: 900;
+}
+
+.redencao {
+    display: flex;
+    align-items: flex-start;
+    gap: 50px;
+    padding: 40px;
+    color: white;
+    flex-wrap: wrap;
+
+}
+
+.redencao h1 {
+    text-align: center;
+    width: 100%;
+    margin-top: 2%;
+    font-size: x-large;
+    font-weight: 900;
+    letter-spacing: 1px;
+    transition: all 0.3s;
+    margin-bottom: 1%;
+}
+
+.redencao h1:hover {
+    transform: scale(1.05)
+}
+
+.redencao img {
+    cursor: pointer;
+    transition: all 0.3s;
+    width: 100%;
+    max-width: 650px;
+    border-radius: 10px;
+    height: auto;
+}
+
+.lado2 {
+    display: flex;
+
+    min-width: 300px;
+    flex-direction: column;
+
+}
+
+.lado2 img:hover {
+    transform: scale(1.05);
+}
+
+.redencao-historia {
+    display: flex;
+    color: white;
+    flex: 1;
+    flex-direction: column;
+    max-width: 800px;
+    margin-top: 5%;
+}
+
+.redencao-historia h2 {
+    margin-bottom: 2%;
+    font-weight: 900;
+
+}
+
+.titulos {
+    display: flex;
+    justify-content: center;
+
+}
+
+.titulos h1 {
+    margin-top: 2%;
+    font-weight: 900;
+    transition: all 0.3s;
+}
+
+.titulos h1:hover {
+    transform: scale(1.05)
+}
+
+.tacas {
+    width: 100%;
+    max-width: 700px;
+    overflow-x: auto;
+    margin: 3em auto;
+    display: flex;
+    scroll-behavior: smooth;
+    anchor-name: --tacas;
+    scroll-snap-type: x mandatory;
+
+
+
+}
+
+.tacas::-webkit-scrollbar {
+    display: none;
+}
+
+.tacas::scroll-button(right),
+.tacas::scroll-button(left) {
+    content: '🠖';
+    border: none;
+    background-color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 3rem;
+    color: black;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    padding-bottom: .1em;
+    cursor: pointer;
+    position: fixed;
+    position-anchor: --tacas;
+    position-area: right center;
+    translate: -50%;
+    transition: all 0.3s;
+}
+
+.tacas::scroll-button(left) {
+    content: '🠔';
+    position-area: left center;
+    translate: 50%;
+    color: black;
+}
+
+.tacas::scroll-button(right):disabled,
+.tacas::scroll-button(left):disabled {
+    opacity: 0.5;
+    cursor: auto;
+}
+
+.tacas::scroll-button(right):hover,
+.tacas::scroll-button(left):hover {
+    transform: scale(1.2);
+}
+
+.card1 {
+    scroll-snap-align: start;
+    flex: 0 0 100%;
+    padding: 1em;
+    border-radius: .5em;
+    align-content: center;
+    object-fit: cover;
+    overflow: hidden;
+
+
+}
+
+.card1 img {
+    width: 100%;
+    max-width: 300px;
+    transition: all 0.3s;
+    border-radius: 10px;
+
+
+}
+
+.card1 h2 {
+    margin-left: 170px;
+}
+
+.card1 h1 {
+    display: flex;
+    justify-content: center;
+    transition: all 0.3s;
+
+}
+
+.card1 h1:hover {
+    transform: scale(1.05);
+}
+
+.card1 img:hover {
+    transform: scale(1.05);
+}
+
+.elencoH {
+    display: flex;
+    justify-content: center;
+
+}
+
+.elencoH h1 {
+    margin-top: 2%;
+    font-weight: 900;
+    transition: all 0.3s;
+}
+
+.elencoH h1:hover {
+    transform: scale(1.05);
+}
+
+.elenco {
+    width: 100%;
+    max-width: 800px;
+    overflow-x: auto;
+    margin: 3em auto;
+    display: flex;
+    scroll-behavior: smooth;
+    anchor-name: --elenco;
+    scroll-snap-type: x mandatory;
+
+}
+
+.elenco img {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    transition: all 0.3s;
+    border-radius: 10px;
+    margin-left: 80px;
+
+
+}
+
+.elenco::-webkit-scrollbar {
+    display: none;
+}
+
+.elenco::scroll-button(right),
+.elenco::scroll-button(left) {
+    content: '🠖';
+    border: none;
+    background-color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 3rem;
+    color: black;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    padding-bottom: .1em;
+    cursor: pointer;
+    position: fixed;
+    position-anchor: --elenco;
+    position-area: right center;
+    translate: -50%;
+    transition: all 0.3s;
+}
+
+.elenco::scroll-button(left) {
+    content: '🠔';
+    position-area: left center;
+    translate: 50%;
+    color: black;
+}
+
+.elenco::scroll-button(right):disabled,
+.elenco::scroll-button(left):disabled {
+    opacity: 0.5;
+    cursor: auto;
+}
+
+.elenco::scroll-button(right):hover,
+.elenco::scroll-button(left):hover {
+    transform: scale(1.2);
+}
+footer {
+    background-color: rgb(26, 25, 25);
+    color: #fff;
+    display: flex;
+    font-size: 15px;
+    margin-top: 60px;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.footerContainer {
+    display: flex;
+    gap: 60px;
+    margin-top: 40px;
+}
+
+.footerLogo img {
+    width: 100%;
+    max-width: 40px;
+    transition: all 0.3s;
+}
+
+.footerLogo img:hover {
+    transform: scale(1.05);
+}
+
+.links {
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
+}
+
+.links a {
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s;
+
+
+
+}
+
+.links a:hover {
+    color: red;
+    transform: scale(1.05);
+}
+
+.version {
+    text-align: center;
+    padding-top: 10px;
+    font-size: 14px;
+
+
+}
+
+
+
+@media (max-width: 1024px) {
+
+    .container,
+    .rebaixamento,
+    .redencao {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .historia,
+    .rebaixamento-historia,
+    .redencao-historia {
+        max-width: 90%;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        height: 90px;
+    }
+
+    nav ul {
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    li img {
+        width: 60px;
+    }
+
+    .carrossel,
+    .tacas,
+    .elenco {
+        width: 95%;
+    }
+
+    .footerContainer {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+    }
+}
+
+@media (max-width: 480px) {
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    header {
+        height: auto;
+        padding: 10px 0;
+    }
+
+    .container,
+    .rebaixamento,
+    .redencao {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 18px;
+    }
+
+    h2 {
+        font-size: 16px;
+    }
+
+    footer {
+        height: auto;
+        padding: 10px 0;
+    }
+}
+
+.janela {
+  display: flex;
+  
+}
+
+.headerLeft a {
+  text-decoration: none;
+  color: white;
+}
+.headerLeft img{
+    width: 100%;
+    max-width: 80px;
+}
+
+.headerLeft {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  height: 100vh;
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  border-right: 3px solid white;
+  background-color: #212124;
+}
+
+.dashRight {
+  display: flex;
+  width: 70%;
+  height: fit-content;
+  background-color: #161618;
+  position: relative;
+  top: 0;
+  left: 25%;
+  height: 100vh;
+  overflow: auto;
+}
+
+.headerLeft h1 {
+  color: white;
+}
+
+.hello {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.hello h3 {
+  color: white;
+  font-weight: 300;
+  font-size: 1.2rem;
+}
+
+.hello h3 span {
+  font-weight: 800;
+}
+
+.botaoNav {
+  width: 50%;
+  color: white;
+  background-color: black;
+  border-radius: 12px;
+  text-align: center;
+  padding: 10px 15px;
+  transition: all 0.3s;
+}
+
+.botaoNav h3,
+.botaoLogout h3,
+.quiz h3 {
+  margin: 0;
+  padding: 0;
+}
+
+.botaoLogout {
+  margin: 0;
+  padding: 0;
+  width: max-content;
+  background-color: black;
+  color: white;
+  border-radius: 12px;
+  text-align: center;
+  padding: 10px 15px;
+  margin-bottom: 100px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.quiz {
+  margin: 0;
+  padding: 0;
+  width: 50%;
+  background-color: black;
+  color: white;
+  border-radius: 12px;
+  text-align: center;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.botaoNav:hover{
+     color: red;
+    transform: scale(1.1);
+    border: 2px solid transparent;
+    background:
+        linear-gradient(black, black) padding-box,
+        linear-gradient(to right, red, black, white) border-box;
+    cursor: pointer;
+
+}
+.botaoLogout:hover{
+     color: red;
+    transform: scale(1.1);
+    border: 2px solid transparent;
+    background:
+        linear-gradient(black, black) padding-box,
+        linear-gradient(to right, red, black, white) border-box;
+    cursor: pointer;
+
+}
+.quiz:hover{
+     color: red;
+    transform: scale(1.1);
+    border: 2px solid transparent;
+    background:
+        linear-gradient(black, black) padding-box,
+        linear-gradient(to right, red, black, white) border-box;
+    cursor: pointer;
+
+}
+.novoBody{
+   
+    background-image: url(../assets/desktop-wallpaper-do-corinthians-gol-de-muro-bandeira-do-timao.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    color: white;
+
+}
+.comecarQuiz{
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    width: 100%;
+    max-width: 800px;
+    margin-top: 150px;
+    height: 500px;
+    background-color: black;
+    margin-left: 400px;
+    border: 1px solid white;
+    border-radius: 10px;
+}
+.comecarQuiz .botaoIniciar{
+  width: 20%;
+  color: white;
+  background-color: black;
+  border-radius: 12px;
+  border: 2px solid white;
+  text-align: center;
+  padding: 10px 15px;
+  transition: all 0.3s;
+  align-self: center;
+}
+.comecarQuiz .botaoIniciar:hover{
+      color: red;
+    transform: scale(1.1);
+    border: 2px solid transparent;
+    background:
+        linear-gradient(black, black) padding-box,
+        linear-gradient(to right, red, black, white) border-box;
+    cursor: pointer;
+
+}
+.pontuacaoDurante{
+    display: flex;
+    width: 100%;
+    max-width: 500px;
+    border: 1px solid white;
+    justify-content: center;
+    align-self: center;
+    flex-direction: column;
+    gap: 40px;
+    margin-left: 20px;
+    padding: 8px;
+    align-items: center;
+    font-weight: 400px;
+    
+}
+.pontuacaoDurante .acertos{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    font-weight: 400px;
+
+}
+.pontuacaoDurante .final{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    font-weight: 400px;
+    text-align: center;
+
+}
+.pontuacaoDurante .finalMsg{
+    display: flex;
+    flex-direction: column;
+    align-self: flex-end;
+    margin-top: 20px;
+    font-weight: 800px;
+}
+
+
+

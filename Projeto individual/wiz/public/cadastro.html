@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/login.css">
+    <link rel="icon" href="./assets/corinthians.94597c2d.png">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <script src="./js/sessao.js"></script>
+
+
+</head>
+
+<body>
+
+    <header>
+
+        <div class="componentes">
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="link1">HOME</a></li>
+                    <li><a href="index.html #historia" class="link2">HISTÓRIA</a></li>
+                    <li><a href="index.html #titulos" class="link3">TITULOS</a></li>
+                    <li><img src="./assets/corinthians.94597c2d.png" alt="Logo Corinthians"></li>
+                    <li><a href="index.html #elenco" class="link4">ELENCO</a></li>
+                    <li><a href="#" class="link5">QUIZ</a></li>
+                    <li><a href="login.html" class="link6">LOGIN</a></li>
+                </ul>
+            </nav>
+        </div>
+
+
+    </header>
+
+    <div class="container">
+        <div class="logo">
+            <img src="./assets/corinthians.94597c2d.png">
+        </div>
+
+        <div class="caixa">
+            <h1>Faça seu cadastro</h1>
+
+            <div class="campos">
+                <input type="text" placeholder="Insira seu nome" id="ipt_nome">
+                <input type="text" placeholder="Insira seu e-mail" id="ipt_login">
+                <input type="password" placeholder="Insira sua senha" id="ipt_senha">
+                <input type="password" placeholder="Insira sua senha novamente" id="ipt_senhaConfirmar">
+                <div class="botao">
+                    <button onclick="cadastrar()">CADASTRAR</button>
+
+                </div>
+            </div>
+        </div>
+
+        <div id="div_aguardar"></div>
+        <div class="card_erro" id="cardErro">
+            <span id="mensagem_erro"></span>
+        </div>
+
+    </div>
+
+    <div class="imagem">
+        <img src="./assets/socrates.jpg" alt="">
+    </div>
+</body>
+
+</html>
+
+<script>
+
+    function cadastrar() {
+
+
+        let nomeVar = ipt_nome.value;
+        let emailVar = ipt_login.value;
+        let senhaVar = ipt_senha.value;
+        let confirmacaoSenhaVar = ipt_senhaConfirmar.value;
+        let msg = '';
+
+
+
+
+
+        if (
+            nomeVar == "" ||
+            emailVar == "" ||
+            senhaVar == "" ||
+            confirmacaoSenhaVar == ""
+        ) { // verificar os campos em branco
+
+            cardErro.style.display = "block";
+            mensagem_erro.innerHTML =
+                "Insira valores válidos";
+            setTimeout(sumirMensagem, 3000);
+            finalizarAguardar();
+            return false;
+
+
+        } if (nomeVar !== '') {
+            if (nomeVar.length <= 1) { // verificar se o tamanho do nome é maior que 1
+                cardErro.style.display = "block";
+                mensagem_erro.innerHTML = `Nome inválido`
+                setTimeout(sumirMensagem, 3000);
+                finalizarAguardar();
+                return false;
+            }
+
+            for (let i = 0; i < nomeVar.length; i++) {
+
+                if (nomeVar[i] == ' ') {
+                    continue; // para se o nome tiver espaço caso contrario nao da para cadastrar nomes como Vitor Henrique
+                }
+
+                if (nomeVar[i].toLowerCase() == nomeVar[i].toUpperCase()) { // se o caractere digitado nao tiver como ser transformado para letra maiuscula ent é numero ou simbolo
+                    cardErro.style.display = "block";
+                    mensagem_erro.innerHTML = `Nome inválido`
+
+                    setTimeout(sumirMensagem, 3000);
+                    finalizarAguardar();
+                    return false;
+                }
+
+            }
+
+        } if (!emailVar.includes('@') || !emailVar.includes('.')) {
+            cardErro.style.display = "block";
+            mensagem_erro.innerHTML =
+                "Insira um email válido, email deve conter @ e .com";
+            setTimeout(sumirMensagem, 3000);
+            finalizarAguardar();
+            return false;
+        } if (senhaVar.length <= 6) {
+            cardErro.style.display = "block";
+            mensagem_erro.innerHTML =
+                "Senha inválida, insira mais de 6 caracteres";
+            setTimeout(sumirMensagem, 3000);
+            finalizarAguardar();
+            return false;
+        } if (senhaVar != confirmacaoSenhaVar || confirmacaoSenhaVar != senhaVar) {
+            cardErro.style.display = "block";
+            mensagem_erro.innerHTML =
+                "Confirmação de senha negada. Senhas diferentes";
+
+            setTimeout(sumirMensagem, 3000);
+            finalizarAguardar();
+            return false;
+        }
+
+
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                nomeServer: nomeVar,
+                emailServer: emailVar,
+                senhaServer: senhaVar,
+
+            }),
+        })
+            .then(function (resposta) {
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+                    cardErro.style.display = "block";
+
+                    mensagem_erro.innerHTML =
+                        "Cadastro realizado com sucesso! Redirecionando para tela de Login";
+
+                    setTimeout(() => {
+                        window.location = "login.html";
+                    }, 2000);
+
+                    limparFormulario();
+                    finalizarAguardar();
+                } else {
+                    throw "Houve um erro ao tentar realizar o cadastro!";
+                }
+            })
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+                finalizarAguardar();
+            });
+
+        return false;
+
+        function sumirMensagem() {
+            cardErro.style.display = "none";
+            mensagem_erro.innerHTML = "";
+
+        }
+    }
+
+</script>
