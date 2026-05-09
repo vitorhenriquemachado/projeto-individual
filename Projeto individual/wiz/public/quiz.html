@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,49 +9,51 @@
     <link rel="stylesheet" href="./css/style.css">
     <link rel="icon" href="./assets/corinthians.94597c2d.png">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
-    
+
 
 </head>
+
 <body onload="validarSessao(), onloadEsconder()" class="novoBody">
-     <div class="janela">
+    <div class="janela">
         <div class="headerLeft">
             <h1>Corinthians</h1>
             <img src="./assets/corinthians.94597c2d.png" alt="">
             <div class="hello">
                 <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
-               
+
             </div>
-            
-            
+
+
             <div class="quiz">
                 <h3>Quiz</h3>
-            
+
             </div>
-            
+
             <div class="botaoNav">
                 <a href="./dashboard.html">
-                    <h3>Dashboard</h3></a>
-                
+                    <h3>Dashboard</h3>
+                </a>
+
 
             </div>
 
-            
+
             <div class="botaoLogout" onclick="limparSessao()">
                 <h3>Sair</h3>
             </div>
 
         </div>
 
-        
 
-        </div>
-         <div id="pontuacaoEJogo" class="comecarQuiz">
+
+    </div>
+    <div id="pontuacaoEJogo" class="comecarQuiz">
         <button id="botaoInicarQuiz" onclick="iniciarQuiz()" class="botaoIniciar">INICIAR QUIZ</button>
 
         <div id="pontuacao" class="pontuacaoDurante">
             <div id="pontuacaoDuranteJogo" class="acertos">
-                <span >Acertos: <span id="spanCertas"></span>0</span>
-                <span >Erros: <span id="spanErradas"></span>0</span>
+                <span>Acertos: <span id="spanCertas">0</span></span>
+                <span>Erros: <span id="spanErradas">0</span></span>
             </div>
             <div id="pontuacaoFinalJogo" class="final">
                 <span id="pontuacaoFinal">Pontuação Final:
@@ -60,15 +63,15 @@
             </div>
         </div>
 
-        <div id="jogo">
+        <div id="jogo" class="perguntas">
 
-            <div id="infoQuestao">
+            <div id="infoQuestao" class="info">
                 <span>Questão atual: <span id="spanNumeroDaQuestaoAtual"></span> de <span id="qtdQuestoes"></span>
                     questões.</span>
             </div>
 
-            <div id="perguntaDaQuestaoAtual" >
-                <span id="spanQuestaoExibida" ></span>
+            <div id="perguntaDaQuestaoAtual">
+                <span id="spanQuestaoExibida"></span>
             </div>
 
             <div id="infoAlternativas">
@@ -80,11 +83,11 @@
                     <input type="radio" id="primeiraOpcao" name="option" class="radio" value="alternativaA" />
                     <label for="primeiraOpcao" class="option" id="labelOpcaoUm"></label>
                 </span>
-                <span>
+                <span class="alternativaLabel">
                     <input type="radio" id="segundaOpcao" name="option" class="radio" value="alternativaB" />
                     <label for="segundaOpcao" class="option" id="labelOpcaoDois"></label>
                 </span>
-                <span>
+                <span class="alternativaLabel">
                     <input type="radio" id="terceiraOpcao" name="option" class="radio" value="alternativaC" />
                     <label for="terceiraOpcao" class="option" id="labelOpcaoTres"></label>
                 </span>
@@ -95,22 +98,23 @@
             </div>
 
             <div id="botoes">
-                <button onclick="submeter()" id="btnSubmeter">Submeter resposta</button>
-                <button onclick="avancar()" id="btnProx" disabled>Avançar para próxima questão</button>
-                <button onclick="finalizar()" id="btnConcluir" disabled>Finalizar Quiz</button>
-                <button onclick="tentarNovamente()" id="btnTentarNovamente" disabled>Tentar novamente</button>
+                <button onclick="submeter()" id="btnSubmeter">ENVIAR RESPOSTA</button>
+               <!--  <button onclick="avancar()" id="btnProx" disabled>PROXIMA PERGUNTA</button> -->
+                <button onclick="finalizarJogo()" id="btnConcluir" disabled>FINALIZAR QUIZ</button>
+                <button onclick="tentarNovamente()" id="btnTentarNovamente" disabled>TENTAR NOVAMENTE</button>
             </div>
 
         </div>
     </div>
 
 </body>
+
 </html>
 <script>
-    
+
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
-     const listaDeQuestoes = [
+    const listaDeQuestoes = [
 
         {
             pergunta: "Quem é o maior artilheiro da NEO QUIMICA ARENA?",
@@ -139,7 +143,7 @@
             alternativaCorreta: "alternativaD"
         },
 
-         {
+        {
             pergunta: "Quantos títulos Memphis Depay tem pelo Corinthians?",
             alternativaA: "1",
             alternativaB: "3",
@@ -166,7 +170,7 @@
             alternativaCorreta: "alternativaA"
         },
 
-         {
+        {
             pergunta: "Quem é o jogador com a maior média de gols pelo Corinthians?",
             alternativaA: "Luizão",
             alternativaB: "Milani",
@@ -224,12 +228,15 @@
         document.getElementById('jogo').style.display = "flex"
         document.getElementById('botaoInicarQuiz').style.display = "none"
 
+
         document.getElementById('qtdQuestoes').innerHTML = quantidadeDeQuestoes
 
         preencherHTMLcomQuestaoAtual(0)
+        btnConcluir.style.display = "none"
+        btnTentarNovamente.style.display = "none"
 
         btnSubmeter.disabled = false
-        btnProx.disabled = true
+        /* btnProx.disabled = true */
         // btnConcluir.disabled = true
         btnTentarNovamente.disabled = true
     }
@@ -263,12 +270,40 @@
             alert("Não há alternativas escolhidas. Escolha uma opção.")
         } else {
             btnSubmeter.disabled = true
-            btnProx.disabled = false
+            /* btnProx.disabled = false */
 
             habilitarAlternativas(false)
 
-            checarResposta()
+           
         }
+       /*  btnProx.disabled = true */
+        btnSubmeter.disabled = false
+        btnConcluir.disabled = false
+        btnTentarNovamente.disabled = false
+         checarResposta()
+        desmarcarRadioButtons()
+
+        if (numeroDaQuestaoAtual >= quantidadeDeQuestoes) {
+            // esconde as perguntas e informações sobre as questoes quando o numero de perguntas respondidas = 1
+            document.getElementById("perguntaDaQuestaoAtual").style.display = "none"
+            document.getElementById("opcoes").style.display = "none"
+            document.getElementById("infoAlternativas").style.display = "none"
+            document.getElementById("infoQuestao").style.display = "none"
+
+            // esconde os botoes inuteis no final do quiz
+            btnSubmeter.style.display = "none"
+            /* btnProx.style.display = "none" */
+
+            // mostra os botoes uteis no final do quiz
+            btnConcluir.style.display = "block"
+            btnTentarNovamente.style.display = "block"
+
+
+        } else {
+
+            preencherHTMLcomQuestaoAtual(numeroDaQuestaoAtual)
+        }
+        limparCoresBackgroundOpcoes()
     }
 
     function habilitarAlternativas(trueOrFalse) {
@@ -280,27 +315,90 @@
         quartaOpcao.disabled = opcaoEscolhida
 
     }
-
+/* 
     function avancar() {
-        btnProx.disabled = true
-        btnSubmeter.disabled = false
-
-        desmarcarRadioButtons()
-
-        if (numeroDaQuestaoAtual < quantidadeDeQuestoes - 1) {
-            preencherHTMLcomQuestaoAtual(numeroDaQuestaoAtual)
-        } else if (numeroDaQuestaoAtual == quantidadeDeQuestoes - 1) {
-            alert("Atenção... a próxima é a ultima questão!")
-            preencherHTMLcomQuestaoAtual(numeroDaQuestaoAtual)
-        } else {
-            finalizarJogo()
-        }
-        limparCoresBackgroundOpcoes()
-    }
+        
+    } */
 
     function tentarNovamente() {
         // atualiza a página
-        window.location.reload()
+
+        let idUsuario = sessionStorage.ID_USUARIO;
+
+        let textoParaMensagemFinal = null
+        let classComCoresParaMensagemFinal = null
+        const porcentagemFinalDeAcertos = pontuacaoFinal / quantidadeDeQuestoes
+
+        if (porcentagemFinalDeAcertos <= 0.3) {
+            textoParaMensagemFinal = "Você é Varmeirense"
+            classComCoresParaMensagemFinal = "text-danger-with-bg"
+        }
+        else if (porcentagemFinalDeAcertos > 0.3 && porcentagemFinalDeAcertos < 0.9) {
+            textoParaMensagemFinal = "Meio corinthiano"
+            classComCoresParaMensagemFinal = "text-warning-with-bg"
+        }
+        else if (porcentagemFinalDeAcertos >= 0.9) {
+            textoParaMensagemFinal = "VAI CORINTHIANS!"
+            classComCoresParaMensagemFinal = "text-success-with-bg"
+        }
+
+        textoParaMensagemFinal += "<br> Você acertou " + Math.round((porcentagemFinalDeAcertos) * 100) + "% das questões."
+
+
+        document.getElementById('msgFinal').innerHTML = textoParaMensagemFinal
+        document.getElementById('msgFinal').classList.add(classComCoresParaMensagemFinal)
+        document.getElementById('spanPontuacaoFinal').innerHTML = pontuacaoFinal
+
+        document.getElementById('jogo').classList.add("text-new-gray")
+
+        document.getElementById("jogo").style.display = "none"
+        document.getElementById("perguntaDaQuestaoAtual").style.display = "none"
+        document.getElementById("opcoes").style.display = "none"
+        document.getElementById("infoAlternativas").style.display = "none"
+        document.getElementById("infoQuestao").style.display = "none"
+
+        btnSubmeter.style.display = "none"
+
+
+         fetch("/quiz/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                pontuacao: pontuacaoFinal,
+                fkUsuario: idUsuario
+
+
+            }),
+        })
+            .then(function (resposta) {
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+
+
+                    console.log("Feito com sucesso")
+
+                    setTimeout(() => {
+                        window.location.reload()
+                    }, 5000);
+
+
+
+                } else {
+                    throw "Houve um erro ao tentar realizar o cadastro!";
+                }
+            })
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+
+            });
+
+        return false;
+
+
+        
     }
 
     function checarResposta() {
@@ -313,8 +411,9 @@
 
         options.forEach((option) => {
             if (option.value === respostaQuestaoAtual) {
-                console.log("alternativaCorreta está no componente: " + alternativaCorreta)
                 alternativaCorreta = option.labels[0].id
+                console.log("alternativaCorreta está no componente: " + alternativaCorreta)
+
             }
         })
 
@@ -355,36 +454,87 @@
     }
 
     function finalizarJogo() {
+        let idUsuario = sessionStorage.ID_USUARIO;
+
         let textoParaMensagemFinal = null
         let classComCoresParaMensagemFinal = null
         const porcentagemFinalDeAcertos = pontuacaoFinal / quantidadeDeQuestoes
 
         if (porcentagemFinalDeAcertos <= 0.3) {
-            textoParaMensagemFinal = "Parece que você não estudou..."
+            textoParaMensagemFinal = "Você é Varmeirense"
             classComCoresParaMensagemFinal = "text-danger-with-bg"
         }
         else if (porcentagemFinalDeAcertos > 0.3 && porcentagemFinalDeAcertos < 0.9) {
-            textoParaMensagemFinal = "Pode melhorar na próxima, hein!"
+            textoParaMensagemFinal = "Meio corinthiano"
             classComCoresParaMensagemFinal = "text-warning-with-bg"
         }
         else if (porcentagemFinalDeAcertos >= 0.9) {
-            textoParaMensagemFinal = "Uau, parabéns!"
+            textoParaMensagemFinal = "VAI CORINTHIANS!"
             classComCoresParaMensagemFinal = "text-success-with-bg"
         }
 
-        textoParaMensagemFinal += "<br> Você acertou " + Math.round((porcentagemFinalDeAcertos)*100) + "% das questões."
+        textoParaMensagemFinal += "<br> Você acertou " + Math.round((porcentagemFinalDeAcertos) * 100) + "% das questões."
 
 
         document.getElementById('msgFinal').innerHTML = textoParaMensagemFinal
-        document.getElementById('msgFinal').classList.add(classComCoresParaMensagemFinal) 
+        document.getElementById('msgFinal').classList.add(classComCoresParaMensagemFinal)
         document.getElementById('spanPontuacaoFinal').innerHTML = pontuacaoFinal
 
-        document.getElementById('jogo').classList.add("text-new-gray") 
+        document.getElementById('jogo').classList.add("text-new-gray")
 
-        btnProx.disabled = true
-        btnSubmeter.disabled = true
-        // btnConcluir.disabled = true
-        btnTentarNovamente.disabled = false
+        document.getElementById("jogo").style.display = "none"
+        document.getElementById("perguntaDaQuestaoAtual").style.display = "none"
+        document.getElementById("opcoes").style.display = "none"
+        document.getElementById("infoAlternativas").style.display = "none"
+        document.getElementById("infoQuestao").style.display = "none"
+
+
+        // esconde os botoes no resultado final se o usuario nao quiser tentar novamente
+        btnSubmeter.style.display = "none"
+     /*    btnProx.style.display = "none" */
+        btnConcluir.style.display = "none"
+        btnTentarNovamente.style.display = "none"
+
+
+        fetch("/quiz/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                pontuacao: pontuacaoFinal,
+                fkUsuario: idUsuario
+
+
+            }),
+        })
+            .then(function (resposta) {
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+
+
+                    console.log("Feito com sucesso")
+
+                    setTimeout(() => {
+                        window.location = "dashboard.html";
+                    }, 5000);
+
+
+
+                } else {
+                    throw "Houve um erro ao tentar realizar o cadastro!";
+                }
+            })
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+
+            });
+
+        return false;
+
 
     }
+
+
 </script>

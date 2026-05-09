@@ -789,7 +789,7 @@ footer {
 }
 .novoBody{
    
-    background-image: url(../assets/desktop-wallpaper-do-corinthians-gol-de-muro-bandeira-do-timao.jpg);
+    background-image: url(../assets/neo_quimica_arena-wallpaper_em_4k_ds_3840x2160.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     min-height: 100vh;
@@ -801,7 +801,7 @@ footer {
     justify-content: center;
     align-items: flex-end;
     width: 100%;
-    max-width: 800px;
+    max-width: 950px;
     margin-top: 150px;
     height: 500px;
     background-color: black;
@@ -833,7 +833,7 @@ footer {
 .pontuacaoDurante{
     display: flex;
     width: 100%;
-    max-width: 500px;
+    max-width: 300px;
     border: 1px solid white;
     justify-content: center;
     align-self: center;
@@ -852,6 +852,10 @@ footer {
     font-weight: 400px;
 
 }
+#spanCertas, #spanErradas,#spanPontuacaoFinal{
+    font-weight: bold;
+}
+
 .pontuacaoDurante .final{
     display: flex;
     flex-direction: column;
@@ -865,8 +869,146 @@ footer {
     flex-direction: column;
     align-self: flex-end;
     margin-top: 20px;
-    font-weight: 800px;
+    font-weight: bold;
 }
 
 
-
+.perguntas{
+    width: 100%;
+    max-width: 500px;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    align-self: center;
+    border: 1px solid white;
+    height: 300px;
+    margin-left: 10px;
+}
+.perguntas .info{
+    
+    margin-top: 20px;
+}
+#spanNumeroDaQuestaoAtual{
+    font-weight: bold;
+}
+#qtdQuestoes{
+    font-weight: bold;
+}
+.perguntas #perguntaDaQuestaoAtual{
+    text-align: center;
+    margin-top: 10px;
+    font-weight: bold;
+}
+.perguntas #infoAlternativas{
+    margin-top: 10px;
+}
+#opcoes{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 10px;
+    font-weight: bold;
+    align-items: flex-start;
+    width: 90%;
+    margin-bottom: 15px;
+}
+#botoes{
+    margin-top: 10px;
+    
+}
+#btnSubmeter{
+  width: 100%;
+  max-width: max-content;
+  color: white;
+  background-color: black;
+  border-radius: 12px;
+  border: 2px solid white;
+  text-align: center;
+  padding: 10px 15px;
+  transition: all 0.3s;
+  align-self: center;
+  font-weight: bold;
+  max-height: max-content;
+}
+#btnSubmeter:hover{
+    color: red;
+    transform: scale(1.1);
+    border: 2px solid transparent;
+    background:
+        linear-gradient(black, black) padding-box,
+        linear-gradient(to right, red, black, white) border-box;
+    cursor: pointer;
+}
+#btnProx{
+  width: 100%;
+  max-width: max-content;
+  color: white;
+  background-color: black;
+  border-radius: 12px;
+  border: 2px solid white;
+  text-align: center;
+  padding: 10px 15px;
+  transition: all 0.3s;
+  align-self: center;
+  font-weight: bold;
+  max-height: max-content;
+}
+#btnProx:hover{
+    color: red;
+    transform: scale(1.1);
+    border: 2px solid transparent;
+    background:
+        linear-gradient(black, black) padding-box,
+        linear-gradient(to right, red, black, white) border-box;
+    cursor: pointer;
+}
+ #btnConcluir{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  max-width: max-content;
+  color: white;
+  background-color: black;
+  border-radius: 12px;
+  border: 2px solid white;
+  text-align: center;
+  padding: 10px 15px;
+  transition: all 0.3s;
+  align-self: center;
+  font-weight: bold;
+  max-height: max-content;
+}
+#btnConcluir:hover{
+    color: red;
+    transform: scale(1.1);
+    border: 2px solid transparent;
+    background:
+        linear-gradient(black, black) padding-box,
+        linear-gradient(to right, red, black, white) border-box;
+    cursor: pointer;
+}
+#btnTentarNovamente{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  max-width: max-content;
+  color: white;
+  background-color: black;
+  border-radius: 12px;
+  border: 2px solid white;
+  text-align: center;
+  padding: 10px 15px;
+  transition: all 0.3s;
+  align-self: center;
+  font-weight: bold;
+  max-height: max-content;
+}
+#btnTentarNovamente:hover{
+    color: red;
+    transform: scale(1.1);
+    border: 2px solid transparent;
+    background:
+        linear-gradient(black, black) padding-box,
+        linear-gradient(to right, red, black, white) border-box;
+    cursor: pointer;
+}

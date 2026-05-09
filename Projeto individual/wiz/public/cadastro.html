@@ -110,7 +110,7 @@
             for (let i = 0; i < nomeVar.length; i++) {
 
                 if (nomeVar[i] == ' ') {
-                    continue; // para se o nome tiver espaço caso contrario nao da para cadastrar nomes como Vitor Henrique
+                    continue; // para se o nome tiver espaço, caso contrario nao da para cadastrar nomes como Vitor Henrique
                 }
 
                 if (nomeVar[i].toLowerCase() == nomeVar[i].toUpperCase()) { // se o caractere digitado nao tiver como ser transformado para letra maiuscula ent é numero ou simbolo
@@ -124,7 +124,7 @@
 
             }
 
-        } if (!emailVar.includes('@') || !emailVar.includes('.')) {
+        } if (!emailVar.includes('@') || !emailVar.endsWith('.com')) {
             cardErro.style.display = "block";
             mensagem_erro.innerHTML =
                 "Insira um email válido, email deve conter @ e .com";
