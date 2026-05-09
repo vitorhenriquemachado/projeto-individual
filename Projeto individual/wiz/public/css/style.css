@@ -679,20 +679,8 @@ footer {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  border-right: 3px solid white;
+  border-right: 1px solid white;
   background-color: #212124;
-}
-
-.dashRight {
-  display: flex;
-  width: 70%;
-  height: fit-content;
-  background-color: #161618;
-  position: relative;
-  top: 0;
-  left: 25%;
-  height: 100vh;
-  overflow: auto;
 }
 
 .headerLeft h1 {
@@ -812,7 +800,6 @@ footer {
   color: white;
   background-color: black;
   border-radius: 12px;
-  border: 2px solid white;
   text-align: center;
   padding: 10px 15px;
   transition: all 0.3s;
@@ -841,7 +828,7 @@ footer {
     padding: 8px;
     align-items: center;
     font-weight: 400px;
-    background-color: #fff;
+    background-color: #212124;
     border-radius: 12px;
     
 }
@@ -884,7 +871,7 @@ footer {
     align-self: center;
     min-height: 300px;
     margin-left: 10px;
-    background-color: #fff;
+    background-color: #212124;
     border-radius: 10px;
 }
 .perguntas .info{
