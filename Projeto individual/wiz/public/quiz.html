@@ -224,7 +224,7 @@
     }
 
     function iniciarQuiz() {
-        document.getElementById('pontuacao').style.display = "flex"
+        document.getElementById('pontuacao').style.display = "none"
         document.getElementById('jogo').style.display = "flex"
         document.getElementById('botaoInicarQuiz').style.display = "none"
 
@@ -289,6 +289,7 @@
             document.getElementById("opcoes").style.display = "none"
             document.getElementById("infoAlternativas").style.display = "none"
             document.getElementById("infoQuestao").style.display = "none"
+            
 
             // esconde os botoes inuteis no final do quiz
             btnSubmeter.style.display = "none"
@@ -344,18 +345,17 @@
 
         textoParaMensagemFinal += "<br> Você acertou " + Math.round((porcentagemFinalDeAcertos) * 100) + "% das questões."
 
-
+        document.getElementById("pontuacao").style.display = "flex"
         document.getElementById('msgFinal').innerHTML = textoParaMensagemFinal
         document.getElementById('msgFinal').classList.add(classComCoresParaMensagemFinal)
         document.getElementById('spanPontuacaoFinal').innerHTML = pontuacaoFinal
-
-        document.getElementById('jogo').classList.add("text-new-gray")
-
+                
         document.getElementById("jogo").style.display = "none"
         document.getElementById("perguntaDaQuestaoAtual").style.display = "none"
         document.getElementById("opcoes").style.display = "none"
         document.getElementById("infoAlternativas").style.display = "none"
         document.getElementById("infoQuestao").style.display = "none"
+        
 
         btnSubmeter.style.display = "none"
 
@@ -460,11 +460,11 @@
         let classComCoresParaMensagemFinal = null
         const porcentagemFinalDeAcertos = pontuacaoFinal / quantidadeDeQuestoes
 
-        if (porcentagemFinalDeAcertos <= 0.3) {
+        if (porcentagemFinalDeAcertos <= 0.4 ) {
             textoParaMensagemFinal = "Você é Varmeirense"
             classComCoresParaMensagemFinal = "text-danger-with-bg"
         }
-        else if (porcentagemFinalDeAcertos > 0.3 && porcentagemFinalDeAcertos < 0.9) {
+        else if (porcentagemFinalDeAcertos >= 0.5 && porcentagemFinalDeAcertos < 0.9) {
             textoParaMensagemFinal = "Meio corinthiano"
             classComCoresParaMensagemFinal = "text-warning-with-bg"
         }
@@ -479,8 +479,9 @@
         document.getElementById('msgFinal').innerHTML = textoParaMensagemFinal
         document.getElementById('msgFinal').classList.add(classComCoresParaMensagemFinal)
         document.getElementById('spanPontuacaoFinal').innerHTML = pontuacaoFinal
-
+        document.getElementById("pontuacao").style.display = "flex"
         document.getElementById('jogo').classList.add("text-new-gray")
+        
 
         document.getElementById("jogo").style.display = "none"
         document.getElementById("perguntaDaQuestaoAtual").style.display = "none"
