@@ -712,6 +712,59 @@ footer {
   padding: 10px 15px;
   transition: all 0.3s;
 }
+.graficosPai{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.grafico{
+    height: 350px;
+    width: 45%;
+    max-width: 700px;
+    background-color: white;
+    border-radius: 10px;
+    margin: auto;
+}
+
+.kpiPai{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 10px;
+    gap: 100px;
+}
+.kpi {
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+    width: 260px;
+    height: 200px;
+    background-color: black;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    font-weight: 700;
+    border-radius: 12px;
+    border: 1px solid white;
+    
+}
+.kpi span{
+    display: flex;
+    text-align: center;
+    align-self: center;
+    font-weight: 900;
+    font-size: x-large;
+}
+.kpi p{
+    display: flex;
+    text-align: center;
+    font-size: medium;
+      
+}
+
+
 
 .botaoNav h3,
 .botaoLogout h3,
@@ -982,4 +1035,27 @@ footer {
         linear-gradient(black, black) padding-box,
         linear-gradient(to right, red, black, white) border-box;
     cursor: pointer;
+}
+
+.ranking{
+    background-color: black;
+    color:white;
+    margin: auto;
+    height: 100vh;
+    width: 100%;
+    max-width: 500px;
+    gap: 20px;
+    text-align: center;
+    border-radius: 12px;
+    border: 1px solid white;
+}
+.tabelas{
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    padding: 10px;
+    width: 100%;
+    margin: auto;
+    margin-top: 20px;
+    
 }

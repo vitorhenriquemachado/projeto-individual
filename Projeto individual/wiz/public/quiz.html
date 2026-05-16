@@ -13,7 +13,7 @@
 
 </head>
 
-<body onload="validarSessao(), onloadEsconder()" class="novoBody">
+<body onload="onloadEsconder()" class="novoBody">
     <div class="janela">
         <div class="headerLeft">
             <h1>Corinthians</h1>
@@ -35,6 +35,11 @@
                 </a>
 
 
+            </div>
+             <div class="botaoNav">
+                <a href="./leaderboard.html">       
+                <h3>Leaderboard</h3>
+                    </a> 
             </div>
 
 
@@ -345,10 +350,7 @@
 
         textoParaMensagemFinal += "<br> Você acertou " + Math.round((porcentagemFinalDeAcertos) * 100) + "% das questões."
 
-        document.getElementById("pontuacao").style.display = "flex"
-        document.getElementById('msgFinal').innerHTML = textoParaMensagemFinal
-        document.getElementById('msgFinal').classList.add(classComCoresParaMensagemFinal)
-        document.getElementById('spanPontuacaoFinal').innerHTML = pontuacaoFinal
+       
                 
         document.getElementById("jogo").style.display = "none"
         document.getElementById("perguntaDaQuestaoAtual").style.display = "none"
@@ -382,7 +384,7 @@
 
                     setTimeout(() => {
                         window.location.reload()
-                    }, 5000);
+                    }, 0);
 
 
 
@@ -476,12 +478,7 @@
         textoParaMensagemFinal += "<br> Você acertou " + Math.round((porcentagemFinalDeAcertos) * 100) + "% das questões."
 
 
-        document.getElementById('msgFinal').innerHTML = textoParaMensagemFinal
-        document.getElementById('msgFinal').classList.add(classComCoresParaMensagemFinal)
-        document.getElementById('spanPontuacaoFinal').innerHTML = pontuacaoFinal
-        document.getElementById("pontuacao").style.display = "flex"
-        document.getElementById('jogo').classList.add("text-new-gray")
-        
+               
 
         document.getElementById("jogo").style.display = "none"
         document.getElementById("perguntaDaQuestaoAtual").style.display = "none"
@@ -504,8 +501,9 @@
             },
             body: JSON.stringify({
                 pontuacao: pontuacaoFinal,
-                fkUsuario: idUsuario
-
+                fkUsuario: idUsuario,
+                acertos: certas,
+                erros: erradas
 
             }),
         })
@@ -519,7 +517,7 @@
 
                     setTimeout(() => {
                         window.location = "dashboard.html";
-                    }, 5000);
+                    }, 0);
 
 
 

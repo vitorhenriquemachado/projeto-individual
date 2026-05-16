@@ -9,10 +9,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
     <script src="./js/sessao.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 </head>
 
-<body onload="validarSessao()">
+<body class="novoBody">
     <div class="janela">
         <div class="headerLeft">
             <h1>Corinthians</h1>
@@ -36,6 +37,11 @@
                 <h3>Dashboard</h3>
 
             </div>
+             <div class="botaoNav">
+                <a href="./leaderboard.html">
+                <h3>Leaderboard</h3>
+</a>
+            </div>
 
 
             <div class="botaoLogout" onclick="limparSessao()">
@@ -45,9 +51,40 @@
         </div>
 
 
-
     </div>
+    <div class="kpiPai">
+    <div class="kpi">
+        MÉDIA TOTAL DOS USUÁRIOS
 
+        <span id="media1"></span>
+        <p id="faltaX"></p>
+    </div>
+    <div class="kpi">
+        SUA MÉDIA
+
+        <span id="media2"></span>
+        <p id="timeReal"></p>
+    </div>
+      <div class="kpi">
+        SUA MAIOR PONTUAÇÃO
+        <span id="auge1"></span>
+        <p id="augeTexto"></p>
+    </div>
+</div>
+<div class="graficosPai">
+    <div class="grafico">
+        <canvas id="pontuacaoGrafico">
+       
+
+        </canvas>
+        
+    </div>
+    <div class="grafico">
+   
+        <canvas id="acertosGrafico">
+             </canvas>
+</div>
+</div>
 
 </body>
 
@@ -55,6 +92,281 @@
 <script>
 
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+
+    
+    let chartPontuacao;
+    let chartAcertos;
+
+    window.onload = exibirGrafico();
+
+    function exibirGrafico() {
+
+        let fkUsuario = sessionStorage.ID_USUARIO;
+
+        obterDadosGrafico(fkUsuario);
+        loadingKpis(fkUsuario);
+    }
+
+
+
+    function obterDadosGrafico(fkUsuario) {
+
+
+
+
+
+        fetch(`/quiz/obterDados/${fkUsuario}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    resposta.reverse();
+
+                    plotarGrafico(resposta, fkUsuario);
+                    acertosErros(resposta, fkUsuario);
+                    
+
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+
+    // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
+    // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
+    // A função *plotarGrafico* também invoca a função *atualizarGrafico*
+    function plotarGrafico(resposta, fkUsuario) {
+
+        console.log('iniciando plotagem do gráfico...');
+
+        // Criando estrutura para plotar gráfico - labels
+        let labels = [];
+
+        // Criando estrutura para plotar gráfico - dados
+        let dados = {
+            labels: labels,
+            datasets: [{
+                label: 'Pontos',
+                data: [],
+                fill: false,
+                borderColor: 'rgb(0, 0, 0)',
+                tension: 0.1
+            },
+            
+            ]
+        };
+
+        
+
+
+        console.log('----------------------------------------------')
+        console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+        console.log(resposta)
+
+        // Inserindo valores recebidos em estrutura para plotar o gráfico
+        for (i = 0; i < resposta.length; i++) {
+            var registro = resposta[i];
+            if(labels.length >= 10){
+                labels.shift();
+                dados.datasets[0].data.shift();
+            }
+            labels.push(`Tentativa(s) ${i + 1}`);
+            dados.datasets[0].data.push(registro.pontuacao);
+
+        }
+
+        console.log('----------------------------------------------')
+        console.log('O gráfico será plotado com os respectivos valores:')
+        console.log('Labels:')
+        console.log(labels)
+        console.log('Dados:')
+        console.log(dados.datasets)
+        console.log('----------------------------------------------')
+
+        // Criando estrutura para plotar gráfico - config
+        const config = {
+            type: 'line',
+            data: dados,
+            options:{
+            scales:{
+            y:{
+                beginAtZero: true,
+
+                min: 0,
+
+                max:10,
+                ticks:{
+                    stepSize: 1
+                }
+            }
+        }
+    }
+        };
+
+        // Adicionando gráfico criado em div na tela
+               if(chartPontuacao != null){
+
+    chartPontuacao.destroy();
+}
+
+       chartPontuacao = new Chart(
+            document.getElementById(`pontuacaoGrafico`),
+            config
+        );
+
+       
+    }
+    function loadingKpis(fkUsuario){
+
+    fetch(`/quiz/loadingKpis/${fkUsuario}`)
+    .then(function(response){
+        return response.json();
+    })
+    
+    .then(function(resposta){
+        let mediaUsuario = Number(resposta.mediaUsuario);
+        let mediaTotal = Number(resposta.mediaTotal);
+        let auge = Number(resposta.auge);
+        console.log("Dados obtidos com sucesso", auge)
+        media1.innerHTML = resposta.mediaTotal;
+        media2.innerHTML = resposta.mediaUsuario;
+        timeReal.innerHTML = resposta.timeReal;
+        auge1.innerHTML = resposta.auge;
+
+
+
+        if(mediaUsuario <= 4){
+            media2.style.color = "red"
+        }
+        else if(mediaUsuario <= 6){
+            media2.style.color = "yellow"
+        }else{
+            media2.style.color = "white"
+        }
+
+
+        
+        if(mediaTotal > mediaUsuario){
+        faltaX.innerHTML = `Falta ${mediaTotal - mediaUsuario} para chegar na média`;
+        media1.style.color = "red"
+    }else if(mediaUsuario > mediaTotal){
+        faltaX.innerHTML = `Você está acima da média`
+        media1.style.color = "white"
+    }else{
+        faltaX.innerHTML = `Você está na média`
+        media1.style.color = "yellow"
+    }
+
+    if(auge <= 5){
+        augeTexto.innerHTML = "Que decepção"
+        auge1.style.color = "red"
+    }
+    else if(auge <= 8){
+        augeTexto.innerHTML = "Tem meu respeito"
+        auge1.style.color = "yellow"
+    }
+    else{
+        augeTexto.innerHTML = "Corinthiano MÁXIMO"
+        auge1.style.color = "white"
+    }
+
+    })
+    .catch(function(erro){
+        console.log("Algo deu errado")
+    });
+
+    
+}
+
+    function acertosErros(resposta, fkUsuario){
+        
+    
+
+        console.log('iniciando plotagem do gráfico...');
+
+        // Criando estrutura para plotar gráfico - labels
+        let labels = [];
+
+        // Criando estrutura para plotar gráfico - dados
+        let dados = {
+            labels: labels,
+            datasets: [{
+                label: 'Acertos',
+                data: [],
+                fill: false,
+                borderColor: 'rgb(0, 0, 0)',
+                backgroundColor: 'rgb(0, 0, 0)',
+                borderWidth: 1,
+                tension: 0.1
+            },
+            {
+                label: "Erros",
+                data:[],
+                fill:false,
+                borderColor: 'rgb(100,100,100)',
+                backgroundColor: 'rgb(100, 100, 100)',
+                borderWidth: 1,
+                tension: 0.1
+            }
+            
+            ]
+        };
+        
+         console.log('----------------------------------------------')
+        console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+        console.log(resposta)
+
+        for(let i = 0; i < resposta.length; i++){
+           
+            var registro = resposta[i];
+
+            labels.push(`Tentativa(s) ${i + 1}`);
+
+            dados.datasets[0].data.push(registro.acertos);
+            dados.datasets[1].data.push(registro.erros);
+
+        }
+        console.log('----------------------------------------------')
+        console.log('O gráfico será plotado com os respectivos valores:')
+        console.log('Labels:')
+        console.log(labels)
+        console.log('Dados:')
+        console.log(dados.datasets)
+        console.log('----------------------------------------------')
+        const config = {
+            
+            type: "bar",
+            data:dados,
+            options:{
+
+            scales:{
+            y:{
+                beginAtZero: true,
+
+                min: 0,
+
+                max:10,
+                ticks:{
+                    stepSize: 1
+                }
+            }
+        }
+        }
+        };
+
+        if(chartAcertos != null){
+
+    chartAcertos.destroy();
+}
+         chartAcertos = new Chart(
+        document.getElementById("acertosGrafico"),
+        config
+    );
+    }
+    
 
 
     

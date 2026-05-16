@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="icon" href="./assets/corinthians.94597c2d.png">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/sessao.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body class="novoBody">
+    <div class="janela">
+        <div class="headerLeft">
+            <h1>Corinthians</h1>
+            <img src="./assets/corinthians.94597c2d.png" alt="">
+            <div class="hello">
+                <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+
+            </div>
+
+
+            <div class="quiz">
+                <a href="quiz.html">
+                    <h3>Quiz</h3>
+                </a>
+
+
+            </div>
+
+            <div class="botaoNav">
+<a href="./dashboard.html">
+                <h3>Dashboard</h3>
+</a>
+            </div>
+
+             <div class="botaoNav">
+
+                <h3>Leaderboard</h3>
+
+            </div>
+
+
+
+            <div class="botaoLogout" onclick="limparSessao()">
+                <h3>Sair</h3>
+            </div>
+
+        </div>
+        <div class="ranking">
+            <h2>Leaderboard</h2>
+            
+              <div id="rankingAtualizado">
+                
+        </div>
+
+        </div>
+      <img src="" alt="">
+</body>
+</html>
+<script>
+
+     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+
+     window.onload = leaderboard();
+
+    function leaderboard(){
+        let img = ""
+    fetch(`/quiz/leaderboard`)
+    .then(res => res.json())
+    .then(resposta => {
+
+        rankingAtualizado.innerHTML = "";
+
+        for(let i = 0; i < resposta.length; i++){
+
+            let pontos = resposta[i];
+            if(i = 1){
+                img = "🥇"
+            }
+            else if(i = 2){
+                img = "🥈"
+            }
+            else if(i = 3){
+                img = "🥉"
+            }
+
+            rankingAtualizado.innerHTML += `
+                <div class="tabelas">
+                    <span><b>Posição<br><br> ${i}º ${img}</b></span>
+                    <span>Nome<br><br>  ${pontos.nome}</span>
+                    <span><b>Pontos<br><br> ${pontos.maiorPontuacao}</b></span>
+                </div><hr><br>
+            `;
+        }
+
+    })
+    .catch(erro => console.log(erro));
+}
+
+</script>
