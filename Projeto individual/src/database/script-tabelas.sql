@@ -22,6 +22,8 @@ CREATE TABLE pontuacao (
 	id INT PRIMARY KEY AUTO_INCREMENT,
 	pontuacao INT,
 	fkUsuario INT,
+	acertos INT,
+	erros INT,
 	FOREIGN KEY (fkUsuario) REFERENCES usuario (idUsuario)
 );
 

@@ -200,12 +200,14 @@
             y:{
                 beginAtZero: true,
 
-                min: 0,
+                
 
                 max:10,
-                ticks:{
-                    stepSize: 1
-                }
+              ticks:{
+                stepSize: 1,
+                
+
+              }
             }
         }
     }
@@ -335,6 +337,11 @@
         for(let i = 0; i < resposta.length; i++){
        
             var registro = resposta[i];
+          if(labels.length >= 10){
+                labels.shift();
+                dados.datasets[0].data.shift();
+            }  
+
 
             labels.push(`Tentativa(s) ${i + 1}`);
 
