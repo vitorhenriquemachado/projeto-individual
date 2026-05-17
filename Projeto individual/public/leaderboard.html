@@ -13,7 +13,7 @@
 
 </head>
 
-<body class="novoBody">
+<body class="novoBody" onload="validarSessao()">
     <div class="janela">
         <div class="headerLeft">
             <h1>Corinthians</h1>
@@ -66,34 +66,37 @@
 
      b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
-     window.onload = leaderboard();
-
+     window.onload = leaderboard;
+  
     function leaderboard(){
         let img = ""
+        
     fetch(`/quiz/leaderboard`)
     .then(res => res.json())
     .then(resposta => {
 
-        rankingAtualizado.innerHTML = "";
+      
 
         for(let i = 0; i < resposta.length; i++){
 
-            let pontos = resposta[i];
-            if(i = 1){
+            let media = resposta[i];
+            if(i == 0){
                 img = "🥇"
             }
-            else if(i = 2){
+            else if(i == 1){
                 img = "🥈"
             }
-            else if(i = 3){
+            else if(i == 2){
                 img = "🥉"
+            }else{
+                img = ""
             }
 
             rankingAtualizado.innerHTML += `
                 <div class="tabelas">
-                    <span><b>Posição<br><br> ${i}º ${img}</b></span>
-                    <span>Nome<br><br>  ${pontos.nome}</span>
-                    <span><b>Pontos<br><br> ${pontos.maiorPontuacao}</b></span>
+                    <span><b>Posição<br><br> ${i + 1}º ${img}</b></span>
+                    <span>Nome<br><br>  ${media.nome}</span>
+                    <span><b>Média<br><br> ${media.maiorPontuacao}</b></span>
                 </div><hr><br>
             `;
         }

@@ -13,7 +13,7 @@
 
 </head>
 
-<body class="novoBody">
+<body class="novoBody" onload="validarSessao()">
     <div class="janela">
         <div class="headerLeft">
             <h1>Corinthians</h1>
@@ -60,7 +60,7 @@
         <p id="faltaX"></p>
     </div>
     <div class="kpi">
-        SUA MÉDIA
+        SUA MÉDIA DE PONTUAÇÃO
 
         <span id="media2"></span>
         <p id="timeReal"></p>
@@ -96,8 +96,9 @@
     
     let chartPontuacao;
     let chartAcertos;
+    
 
-    window.onload = exibirGrafico();
+    window.onload = exibirGrafico;
 
     function exibirGrafico() {
 
@@ -105,6 +106,7 @@
 
         obterDadosGrafico(fkUsuario);
         loadingKpis(fkUsuario);
+       
     }
 
 
@@ -120,7 +122,7 @@
                 response.json().then(function (resposta) {
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                     resposta.reverse();
-
+                      
                     plotarGrafico(resposta, fkUsuario);
                     acertosErros(resposta, fkUsuario);
                     
@@ -139,6 +141,9 @@
     // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
     // A função *plotarGrafico* também invoca a função *atualizarGrafico*
     function plotarGrafico(resposta, fkUsuario) {
+
+        
+
 
         console.log('iniciando plotagem do gráfico...');
 
@@ -207,10 +212,7 @@
         };
 
         // Adicionando gráfico criado em div na tela
-               if(chartPontuacao != null){
-
-    chartPontuacao.destroy();
-}
+             
 
        chartPontuacao = new Chart(
             document.getElementById(`pontuacaoGrafico`),
@@ -230,18 +232,23 @@
         let mediaUsuario = Number(resposta.mediaUsuario);
         let mediaTotal = Number(resposta.mediaTotal);
         let auge = Number(resposta.auge);
+        let mensagem = resposta.mensagem
+        let img = ``
         console.log("Dados obtidos com sucesso", auge)
         media1.innerHTML = resposta.mediaTotal;
         media2.innerHTML = resposta.mediaUsuario;
         timeReal.innerHTML = resposta.timeReal;
         auge1.innerHTML = resposta.auge;
+        
 
-
-
-        if(mediaUsuario <= 4){
+        if(mediaUsuario == 0){
+            media2.innerHTML = `${mediaUsuario}`
+        }
+        
+       else if(mediaUsuario <= 5){
             media2.style.color = "red"
         }
-        else if(mediaUsuario <= 6){
+        else if(mediaUsuario >= 6 && mediaUsuario <= 8){
             media2.style.color = "yellow"
         }else{
             media2.style.color = "white"
@@ -260,17 +267,22 @@
         media1.style.color = "yellow"
     }
 
-    if(auge <= 5){
+    if(auge == 0){
+        augeTexto.innerHTML = mensagem;
+        auge1.innerHTML = `${auge}`
+    }
+    else if(auge <= 5){
         augeTexto.innerHTML = "Que decepção"
         auge1.style.color = "red"
     }
-    else if(auge <= 8){
+    else if(auge <= 9){
         augeTexto.innerHTML = "Tem meu respeito"
         auge1.style.color = "yellow"
     }
     else{
-        augeTexto.innerHTML = "Corinthiano MÁXIMO"
+        augeTexto.innerHTML = "Corinthiano MÁXIMO" 
         auge1.style.color = "white"
+        auge1.innerHTML =  `<img src="./assets/corinthians.94597c2d.png" alt="" width="40px">` 
     }
 
     })
@@ -318,9 +330,10 @@
          console.log('----------------------------------------------')
         console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
         console.log(resposta)
+        
 
         for(let i = 0; i < resposta.length; i++){
-           
+       
             var registro = resposta[i];
 
             labels.push(`Tentativa(s) ${i + 1}`);
@@ -356,11 +369,8 @@
         }
         }
         };
-
-        if(chartAcertos != null){
-
-    chartAcertos.destroy();
-}
+        
+        
          chartAcertos = new Chart(
         document.getElementById("acertosGrafico"),
         config

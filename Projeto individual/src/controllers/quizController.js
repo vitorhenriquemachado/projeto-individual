@@ -80,7 +80,8 @@ function cadastrar(req, res) {
           mediaUsuario: resultadoUsuario[0].mediaUsuario,
           timeReal: resultadoUsuario[0].timeReal,
           mediaTotal: resultadoTotal[0].mediaTotal,
-          auge: auge[0].maximo
+          auge: auge[0].maximo,
+          mensagem: auge[0].mensagem
         });
     });
     });

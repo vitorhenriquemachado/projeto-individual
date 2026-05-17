@@ -577,83 +577,6 @@ footer {
 }
 
 
-
-@media (max-width: 1024px) {
-
-    .container,
-    .rebaixamento,
-    .redencao {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-
-    .historia,
-    .rebaixamento-historia,
-    .redencao-historia {
-        max-width: 90%;
-    }
-}
-
-@media (max-width: 768px) {
-    header {
-        height: 90px;
-    }
-
-    nav ul {
-        gap: 15px;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    li img {
-        width: 60px;
-    }
-
-    .carrossel,
-    .tacas,
-    .elenco {
-        width: 95%;
-    }
-
-    .footerContainer {
-        flex-direction: column;
-        text-align: center;
-        align-items: center;
-    }
-}
-
-@media (max-width: 480px) {
-    nav ul {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    header {
-        height: auto;
-        padding: 10px 0;
-    }
-
-    .container,
-    .rebaixamento,
-    .redencao {
-        padding: 20px;
-    }
-
-    h1 {
-        font-size: 18px;
-    }
-
-    h2 {
-        font-size: 16px;
-    }
-
-    footer {
-        height: auto;
-        padding: 10px 0;
-    }
-}
-
 .janela {
   display: flex;
   
@@ -1056,6 +979,6 @@ footer {
     padding: 10px;
     width: 100%;
     margin: auto;
-    margin-top: 20px;
+    
     
 }

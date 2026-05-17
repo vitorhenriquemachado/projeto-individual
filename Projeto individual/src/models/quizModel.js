@@ -20,7 +20,12 @@ console.log("ACESSEI O QUIZ MODEL \n \n\t\t >> Se aqui der erro de 'Error: conne
 }
 function obterDados(fkUsuario){
    
-    var instrucaoSql = `SELECT * FROM graficos;` // utilizando view para chamar comandos SQL
+    var instrucaoSql = ` SELECT pontuacao,acertos,erros
+    FROM usuario
+    JOIN pontuacao
+    ON fkUsuario = idUsuario
+    WHERE fkUsuario = ${fkUsuario}
+    ORDER BY id DESC;;` // utilizando view para chamar comandos SQL
     
     console.log("Executando a instrucaoSql: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -34,11 +39,19 @@ function mediaTotal(fkUsuario){
     console.log("Executando a instrucaoSql: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
-function mediaUsuario(idUsuario){
+function mediaUsuario(fkUsuario){
         
     var instrucaoSql = `
 
-        SELECT * FROM kpis_1;`
+       SELECT TRUNCATE(AVG(pontuacao),1) AS mediaUsuario,
+   CASE 
+WHEN AVG(pontuacao) <= 5 THEN 'Você é varmeirense'
+WHEN AVG(pontuacao) >=6 AND AVG(pontuacao) <=8 THEN 'Você é CORINTHIANO de Verdade'
+WHEN AVG(pontuacao) IS NULL THEN 'SEM REGISTRO'
+ELSE 'VOCÊ VIVE DE CORINTHAINS!'
+END AS timeReal
+FROM pontuacao
+WHERE fkUsuario = ${fkUsuario};`
         ;
     console.log("Executando a instrucaoSql: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -46,7 +59,12 @@ function mediaUsuario(idUsuario){
 function maiorPontuacao(fkUsuario){
     var instrucaoSql = `
 
-        SELECT * FROM auge;`
+        SELECT MAX(pontuacao) AS maximo,
+        CASE
+        WHEN AVG(pontuacao) IS NULL THEN 'SEM REGISTRO'
+        END AS mensagem
+         FROM pontuacao
+WHERE fkUsuario = ${fkUsuario};`
         ;
     console.log("Executando a instrucaoSql: \n" + instrucaoSql);
     return database.executar(instrucaoSql);

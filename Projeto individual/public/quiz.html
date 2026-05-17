@@ -13,7 +13,7 @@
 
 </head>
 
-<body onload="onloadEsconder()" class="novoBody">
+<body onload="onloadEsconder(), validarSessao()" class="novoBody">
     <div class="janela">
         <div class="headerLeft">
             <h1>Corinthians</h1>
@@ -240,10 +240,7 @@
         btnConcluir.style.display = "none"
         btnTentarNovamente.style.display = "none"
 
-        btnSubmeter.disabled = false
-        /* btnProx.disabled = true */
-        // btnConcluir.disabled = true
-        btnTentarNovamente.disabled = true
+        
     }
 
     function preencherHTMLcomQuestaoAtual(index) {
@@ -331,26 +328,7 @@
 
         let idUsuario = sessionStorage.ID_USUARIO;
 
-        let textoParaMensagemFinal = null
-        let classComCoresParaMensagemFinal = null
-        const porcentagemFinalDeAcertos = pontuacaoFinal / quantidadeDeQuestoes
-
-        if (porcentagemFinalDeAcertos <= 0.3) {
-            textoParaMensagemFinal = "Você é Varmeirense"
-            classComCoresParaMensagemFinal = "text-danger-with-bg"
-        }
-        else if (porcentagemFinalDeAcertos > 0.3 && porcentagemFinalDeAcertos < 0.9) {
-            textoParaMensagemFinal = "Meio corinthiano"
-            classComCoresParaMensagemFinal = "text-warning-with-bg"
-        }
-        else if (porcentagemFinalDeAcertos >= 0.9) {
-            textoParaMensagemFinal = "VAI CORINTHIANS!"
-            classComCoresParaMensagemFinal = "text-success-with-bg"
-        }
-
-        textoParaMensagemFinal += "<br> Você acertou " + Math.round((porcentagemFinalDeAcertos) * 100) + "% das questões."
-
-       
+             
                 
         document.getElementById("jogo").style.display = "none"
         document.getElementById("perguntaDaQuestaoAtual").style.display = "none"
@@ -369,7 +347,9 @@
             },
             body: JSON.stringify({
                 pontuacao: pontuacaoFinal,
-                fkUsuario: idUsuario
+                fkUsuario: idUsuario,
+                acertos: certas,
+                erros: erradas
 
 
             }),
@@ -458,27 +438,7 @@
     function finalizarJogo() {
         let idUsuario = sessionStorage.ID_USUARIO;
 
-        let textoParaMensagemFinal = null
-        let classComCoresParaMensagemFinal = null
-        const porcentagemFinalDeAcertos = pontuacaoFinal / quantidadeDeQuestoes
-
-        if (porcentagemFinalDeAcertos <= 0.4 ) {
-            textoParaMensagemFinal = "Você é Varmeirense"
-            classComCoresParaMensagemFinal = "text-danger-with-bg"
-        }
-        else if (porcentagemFinalDeAcertos >= 0.5 && porcentagemFinalDeAcertos < 0.9) {
-            textoParaMensagemFinal = "Meio corinthiano"
-            classComCoresParaMensagemFinal = "text-warning-with-bg"
-        }
-        else if (porcentagemFinalDeAcertos >= 0.9) {
-            textoParaMensagemFinal = "VAI CORINTHIANS!"
-            classComCoresParaMensagemFinal = "text-success-with-bg"
-        }
-
-        textoParaMensagemFinal += "<br> Você acertou " + Math.round((porcentagemFinalDeAcertos) * 100) + "% das questões."
-
-
-               
+                      
 
         document.getElementById("jogo").style.display = "none"
         document.getElementById("perguntaDaQuestaoAtual").style.display = "none"
