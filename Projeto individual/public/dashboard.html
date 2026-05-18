@@ -52,6 +52,7 @@
 
 
     </div>
+    <div class="dashboardBack">
     <div class="kpiPai">
     <div class="kpi">
         MÉDIA TOTAL DOS USUÁRIOS
@@ -86,7 +87,7 @@
              </canvas>
 </div>
 </div>
-
+</div>
 </body>
 
 </html>
@@ -260,7 +261,7 @@
 
 
         if(mediaTotal == 0){
-            media1.innerHTML = `${mediaTotal}`
+            media1.innerHTML = `${mediaTotal.toFixed(1)}`
         }     
         if(mediaTotal > mediaUsuario){
         faltaX.innerHTML = `Falta ${(mediaTotal - mediaUsuario).toFixed(1)} para chegar na média global`;

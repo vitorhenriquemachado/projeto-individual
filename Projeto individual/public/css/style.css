@@ -595,7 +595,7 @@ footer {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 999;
+  z-index: 1;
   height: 100vh;
   width: 100%;
   max-width: 310px;
@@ -603,8 +603,8 @@ footer {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  border-right: 1px solid white;
-  background-color: #212124;
+  border-radius: 10px;
+  background-color: rgb(0, 0, 0, 0.9);
 }
 
 .headerLeft h1 {
@@ -640,9 +640,9 @@ footer {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    
-    margin-left:310px;
     height: 100%;
+    position: relative;
+    
 }
 .grafico{
     height: 250px;
@@ -659,14 +659,28 @@ footer {
     text-align: center;
     margin-top: 10px;
 }
+.dashboardBack{
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    flex-direction: column;
+    background-color: rgb(0, 0, 0, 0.8);
+    width: 75%;
+    height: 85vh;
+    border-radius: 10px;
+    margin-top: 50px;
+    border: 1px solid white;
+    box-shadow: 3px 3px 3px 1px rgb(255, 255, 255);
+    margin-left: 315px;
+}   
 
 .kpiPai{
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
-    width: 70%;
+    
+    width: 100%;
     padding: 10px;
-    margin-left: 340px;
+    position: relative;
 }
 .kpi {
     display: flex;
@@ -764,7 +778,7 @@ footer {
 
 }
 .novoBody{
-   
+    display: flex;
     background-image: url(../assets/neo_quimica_arena-wallpaper_em_4k_ds_3840x2160.jpg);
     background-size: cover;
     background-repeat: no-repeat;
@@ -779,7 +793,7 @@ footer {
     max-width: 950px;
     min-height: 80vh;
     margin: 3em auto;
-    background-color: black;
+    background-color: rgb(0, 0, 0, 0.8);
     border: 1px solid white;
     border-radius: 10px;
     margin-left: 325px;
@@ -974,10 +988,10 @@ footer {
 }
 
 .ranking{
-    background-color: black;
+    background-color: rgb(0, 0, 0, 0.95);
     color:white;
     margin: auto;
-    height: 100vh;
+    height: 80vh;
     width: 100%;
     max-width: 500px;
     gap: 20px;
@@ -985,6 +999,7 @@ footer {
     border-radius: 12px;
     border: 1px solid white;
     margin-left: 520px;
+    margin-top: 40px;
 }
 .tabelas{
     display: flex;
@@ -993,6 +1008,7 @@ footer {
     padding: 10px;
     width: 100%;
     margin: auto;
+    
     
     
 }

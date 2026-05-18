@@ -55,11 +55,12 @@
             <h2>Leaderboard</h2>
             
               <div id="rankingAtualizado">
-                
+               
         </div>
-
+         <div id="rankingNomes"></div>
         </div>
-      <img src="" alt="">
+     
+        
 </body>
 </html>
 <script>
@@ -92,13 +93,18 @@
                 img = ""
             }
 
-            rankingAtualizado.innerHTML += `
+            rankingAtualizado.innerHTML = `
                 <div class="tabelas">
-                    <span><b>Posição<br><br> ${i + 1}º ${img}</b></span>
-                    <span>Nome<br><br>  ${media.nome}</span>
-                    <span><b>Média<br><br> ${media.maiorPontuacao}</b></span>
-                </div><hr><br>
+                    <span><b>Posição</b></span>
+                    <span>Nome</span>
+                    <span><b>Média</b></span>
+                </div>
             `;
+            rankingNomes.innerHTML += `<div class="tabelas">
+                    <span><b> ${i + 1}º ${img}</b></span>
+                    <span> ${media.nome}</span>
+                    <span><b>${media.maiorPontuacao}</b></span>
+                </div>`
         }
 
     })
