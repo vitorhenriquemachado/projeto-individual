@@ -639,6 +639,8 @@ footer {
 .graficosPai{
     display: flex;
     justify-content: center;
+    align-items: flex-start;
+    
     margin-left:310px;
     height: 100%;
 }
