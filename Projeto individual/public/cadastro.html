@@ -25,7 +25,7 @@
                     <li><a href="index.html #titulos" class="link3">TITULOS</a></li>
                     <li><img src="./assets/corinthians.94597c2d.png" alt="Logo Corinthians"></li>
                     <li><a href="index.html #elenco" class="link4">ELENCO</a></li>
-                    <li><a href="#" class="link5">QUIZ</a></li>
+                    <li><a href="#" class="link5">CADASTRO</a></li>
                     <li><a href="login.html" class="link6">LOGIN</a></li>
                 </ul>
             </nav>
@@ -158,6 +158,7 @@
                 nomeServer: nomeVar,
                 emailServer: emailVar,
                 senhaServer: senhaVar,
+                
 
             }),
         })
@@ -165,6 +166,7 @@
                 console.log("resposta: ", resposta);
 
                 if (resposta.ok) {
+                    
                     cardErro.style.display = "block";
 
                     mensagem_erro.innerHTML =
@@ -182,6 +184,8 @@
             })
             .catch(function (resposta) {
                 console.log(`#ERRO: ${resposta}`);
+
+                
                 finalizarAguardar();
             });
 

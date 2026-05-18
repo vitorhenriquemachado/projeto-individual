@@ -24,8 +24,8 @@
                     <li><a href="index.html #titulos" class="link3">TITULOS</a></li>
                     <li><img src="./assets/corinthians.94597c2d.png" alt="Logo Corinthians"></li>
                     <li><a href="index.html #elenco" class="link4">ELENCO</a></li>
-                    <li><a href="#" class="link5">QUIZ</a></li>
                     <li><a href="login.html" class="link6">LOGIN</a></li>
+                    <li><a href="cadastro.html" class="link5">CADASTRO</a></li>
                 </ul>
             </nav>
         </div>
@@ -107,7 +107,8 @@
             },
             body: JSON.stringify({
                 emailServer: emailVar,
-                senhaServer: senhaVar
+                senhaServer: senhaVar,
+                
             })
         }).then(function (resposta) {
             console.log("ESTOU NO THEN DO logar()!")
@@ -123,7 +124,7 @@
                     sessionStorage.ID_USUARIO = json.id;
                     
                     setTimeout(function () {
-                        window.location= "dashboard.html";
+                        window.location= "quiz.html";
                     }, 1000); // apenas para exibir o loading
 
                 });

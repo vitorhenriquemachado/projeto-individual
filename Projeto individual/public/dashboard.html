@@ -73,6 +73,7 @@
 </div>
 <div class="graficosPai">
     <div class="grafico">
+        <h1>GRÁFICO DE PONTUAÇÃO POR QUIZ</h1>
         <canvas id="pontuacaoGrafico">
        
 
@@ -80,7 +81,7 @@
         
     </div>
     <div class="grafico">
-   
+        <h1>GRÁFICO DE ACERTOS E ERROS POR QUIZ</h1>
         <canvas id="acertosGrafico">
              </canvas>
 </div>
@@ -196,13 +197,14 @@
             type: 'line',
             data: dados,
             options:{
+                
             scales:{
             y:{
                 beginAtZero: true,
 
                 
 
-                max:10,
+                max:11,
               ticks:{
                 stepSize: 1,
                 
@@ -257,9 +259,11 @@
         }
 
 
-        
+        if(mediaTotal == 0){
+            media1.innerHTML = `${mediaTotal}`
+        }     
         if(mediaTotal > mediaUsuario){
-        faltaX.innerHTML = `Falta ${mediaTotal - mediaUsuario} para chegar na média`;
+        faltaX.innerHTML = `Falta ${(mediaTotal - mediaUsuario).toFixed(1)} para chegar na média global`;
         media1.style.color = "red"
     }else if(mediaUsuario > mediaTotal){
         faltaX.innerHTML = `Você está acima da média`
@@ -286,6 +290,8 @@
         auge1.style.color = "white"
         auge1.innerHTML =  `<img src="./assets/corinthians.94597c2d.png" alt="" width="40px">` 
     }
+
+   
 
     })
     .catch(function(erro){

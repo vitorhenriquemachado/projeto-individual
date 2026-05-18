@@ -653,6 +653,12 @@ footer {
     margin: 1em auto;
     
 }
+.grafico h1{
+    color: black;
+    font-size: medium;
+    text-align: center;
+    margin-top: 10px;
+}
 
 .kpiPai{
     display: flex;
