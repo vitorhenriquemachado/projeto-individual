@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Leaderboard</title>
     <link rel="icon" href="./assets/corinthians.94597c2d.png">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css">
@@ -90,7 +90,7 @@
             else if(i == 2){
                 img = "🥉"
             }else{
-                img = ""
+                img = "ㅤ"
             }
 
             rankingAtualizado.innerHTML = `
@@ -102,7 +102,7 @@
             `;
             rankingNomes.innerHTML += `<div class="tabelas">
                     <span><b> ${i + 1}º ${img}</b></span>
-                    <span> ${media.nome}</span>
+                    <span>${media.nome}</span>
                     <span><b>${media.maiorPontuacao}</b></span>
                 </div>`
         }

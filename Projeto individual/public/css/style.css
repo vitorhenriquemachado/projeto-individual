@@ -57,7 +57,7 @@ nav a {
 nav a:hover {
     color: red;
     transform: scale(1.2);
-
+    
 
 }
 
@@ -159,19 +159,19 @@ li img:hover {
     padding: 40px;
     color: white;
     margin-top: 150px;
-
+    background-color: rgb(22,22, 22, 0.8);
 }
 
 .container h1 {
     width: 100%;
     text-align: center;
-    margin-top: 2%;
+    margin-top: 17%;
     font-size: x-large;
     font-weight: 900;
     letter-spacing: 1px;
     transition: all 0.3s;
     margin-bottom: 1%;
-
+    
 
 }
 
@@ -260,7 +260,7 @@ li img:hover {
     color: white;
     flex-direction: column;
     max-width: 800px;
-    margin-top: 5%;
+    margin-top:1%;
 }
 
 .rebaixamento-historia h2 {
@@ -274,7 +274,7 @@ li img:hover {
     gap: 50px;
     padding: 40px;
     color: white;
-    flex-wrap: wrap;
+    background-color: rgb(22,22, 22, 0.8);
 
 }
 
@@ -320,7 +320,7 @@ li img:hover {
     flex: 1;
     flex-direction: column;
     max-width: 800px;
-    margin-top: 5%;
+    margin-top: 1%;
 }
 
 .redencao-historia h2 {
@@ -444,13 +444,14 @@ li img:hover {
 .elencoH {
     display: flex;
     justify-content: center;
-
+    
 }
 
 .elencoH h1 {
     margin-top: 2%;
     font-weight: 900;
     transition: all 0.3s;
+    
 }
 
 .elencoH h1:hover {
@@ -478,6 +479,10 @@ li img:hover {
     margin-left: 80px;
 
 
+
+}
+.backElenco{
+    background-color: rgb(22,22, 22, 0.8);
 }
 
 .elenco::-webkit-scrollbar {
@@ -1008,7 +1013,5 @@ footer {
     padding: 10px;
     width: 100%;
     margin: auto;
-    
-    
     
 }
