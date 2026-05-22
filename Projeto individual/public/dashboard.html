@@ -282,14 +282,19 @@
         augeTexto.innerHTML = "Que decepção"
         auge1.style.color = "red"
     }
-    else if(auge <= 9){
+    else if(auge <= 8){
         augeTexto.innerHTML = "Tem meu respeito"
         auge1.style.color = "yellow"
+    }
+    else if(auge <= 9.9){
+        augeTexto.innerHTML = "Real Corinthiano" 
+        auge1.style.color = "white"
+        
     }
     else{
         augeTexto.innerHTML = "Corinthiano MÁXIMO" 
         auge1.style.color = "white"
-        auge1.innerHTML =  `<img src="./assets/corinthians.94597c2d.png" alt="" width="40px">` 
+        auge1.innerHTML =  `${auge}`+`<img src="./assets/corinthians.94597c2d.png" alt="" width="30px">` 
     }
 
    

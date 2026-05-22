@@ -301,28 +301,3 @@ footer {
 
 }
 
-
-@media (max-width: 768px) {
-    nav ul {
-        gap: 10px;
-    }
-
-    header {
-        height: 70px;
-    }
-        
-}
-
-@media (max-width: 480px) {
-    nav ul {
-        flex-direction: column;
-    }
-
-    li img {
-        width: 50px;
-    }
-
-    .container {
-        padding: 15px;
-    }
-}
