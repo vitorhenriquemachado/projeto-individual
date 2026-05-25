@@ -17,7 +17,6 @@ header {
     position: fixed;
     width: 100%;
     background-color: black;
-    box-shadow: 1px 1px rgb(255, 255, 255);
     height: 110px;
     z-index: 1;
     top: 0;
@@ -178,7 +177,7 @@ li img:hover {
 .lado {
     display: flex;
     flex-direction: column;
-
+    
 }
 
 .container h1:hover {
@@ -203,6 +202,7 @@ li img:hover {
     flex-direction: column;
     max-width: 800px;
     margin-top: 5%;
+    font-size: larger;
 }
 
 .historia h2 {
@@ -218,7 +218,7 @@ li img:hover {
     gap: 50px;
     padding: 40px;
     color: white;
-
+    font-size: larger;
 }
 
 .rebaixamento h1 {
@@ -275,7 +275,7 @@ li img:hover {
     padding: 40px;
     color: white;
     background-color: rgb(22,22, 22, 0.8);
-
+    font-size: larger;
 }
 
 .redencao h1 {
