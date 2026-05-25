@@ -594,6 +594,10 @@ footer {
 .headerLeft img{
     width: 100%;
     max-width: 80px;
+    transition: all 0.3s;
+}
+.headerLeft img:hover{
+    transform: scale(1.1);
 }
 
 .headerLeft {
@@ -784,7 +788,7 @@ footer {
 }
 .novoBody{
     display: flex;
-    background-image: url(../assets/neo_quimica_arena-wallpaper_em_4k_ds_3840x2160.jpg);
+    background-image: url(../assets/ChatGPT\ Image\ 25\ de\ mai.\ de\ 2026\,\ 14_46_32.png);
     background-size: cover;
     background-repeat: no-repeat;
     min-height: 100vh;

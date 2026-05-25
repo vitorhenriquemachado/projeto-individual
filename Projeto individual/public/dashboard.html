@@ -74,7 +74,7 @@
 </div>
 <div class="graficosPai">
     <div class="grafico">
-        <h1>GRÁFICO DE PONTUAÇÃO POR QUIZ</h1>
+        <h1>GRÁFICO DE PONTUAÇÃO POR TENTATIVA</h1>
         <canvas id="pontuacaoGrafico">
        
 
@@ -82,7 +82,7 @@
         
     </div>
     <div class="grafico">
-        <h1>GRÁFICO DE ACERTOS E ERROS POR QUIZ</h1>
+        <h1>GRÁFICO DE ACERTOS E ERROS POR TENTATIVA</h1>
         <canvas id="acertosGrafico">
              </canvas>
 </div>
@@ -180,7 +180,7 @@
                 labels.shift();
                 dados.datasets[0].data.shift();
             }
-            labels.push(`Tentativa(s) ${i + 1}`);
+            labels.push(`Tentativa ${i + 1}`);
             dados.datasets[0].data.push(registro.pontuacao);
 
         }
@@ -355,7 +355,7 @@
             }  
 
 
-            labels.push(`Tentativa(s) ${i + 1}`);
+            labels.push(`Tentativa ${i + 1}`);
 
             dados.datasets[0].data.push(registro.acertos);
             dados.datasets[1].data.push(registro.erros);

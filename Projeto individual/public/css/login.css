@@ -188,19 +188,6 @@ button:hover {
 
 }
 
-.esqueci {
-    display: flex;
-    justify-content: right;
-    margin-top: 10px;
-    margin-bottom: 20px;
-    font-size: small;
-    transition: all 0.3s;
-    cursor: pointer;
-}
-
-.esqueci:hover {
-    transform: scale(1.1);
-}
 
 .naoTem {
     display: flex;
@@ -243,8 +230,10 @@ button:hover {
 }
 
 .card_erro #mensagem_erro {
+    display: flex;
     font-weight: 500;
     font-size: 15px;
+    justify-content: flex-end;
 }
 footer {
     background-color: rgb(26, 25, 25);
