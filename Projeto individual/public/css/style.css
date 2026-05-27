@@ -1000,14 +1000,14 @@ footer {
     background-color: rgb(0, 0, 0, 0.95);
     color:white;
     margin: auto;
-    height: 80vh;
+    height: auto;
     width: 100%;
     max-width: 500px;
     gap: 20px;
     text-align: center;
     border-radius: 12px;
     border: 1px solid white;
-    margin-left: 520px;
+    margin-left: 590px;
     margin-top: 40px;
 }
 .tabelas{

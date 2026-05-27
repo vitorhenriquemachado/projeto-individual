@@ -87,8 +87,10 @@
         if (emailVar == "" || senhaVar == "") {
             cardErro.style.display = "block"
             mensagem_erro.innerHTML = "Insira os dados no campo";
+            setTimeout(sumirMensagem, 2000);
             finalizarAguardar();
             return false;
+        
         }
         else {
             setTimeout(sumirMensagem, 2000)
@@ -146,10 +148,10 @@
     }
 
     function sumirMensagem() {
-        cardErro.style.display = "none"
-        div_erros_login.style.display = "none"
+            cardErro.style.display = "none";
+            mensagem_erro.innerHTML = "";
 
-    }
+        }
 
 
 </script>
