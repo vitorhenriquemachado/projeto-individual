@@ -54,7 +54,7 @@
             </div>
         </div>
 
-        <div id="div_aguardar"></div>
+
         <div class="card_erro" id="cardErro">
             <span id="mensagem_erro"></span>
         </div>
@@ -94,7 +94,7 @@
             mensagem_erro.innerHTML =
                 "Insira valores válidos";
             setTimeout(sumirMensagem, 3000);
-            finalizarAguardar();
+
             return false;
 
 
@@ -103,7 +103,7 @@
                 cardErro.style.display = "block";
                 mensagem_erro.innerHTML = `Nome inválido`
                 setTimeout(sumirMensagem, 3000);
-                finalizarAguardar();
+
                 return false;
             }
 
@@ -118,7 +118,7 @@
                     mensagem_erro.innerHTML = `Nome inválido`
 
                     setTimeout(sumirMensagem, 3000);
-                    finalizarAguardar();
+
                     return false;
                 }
 
@@ -129,14 +129,14 @@
             mensagem_erro.innerHTML =
                 "Insira um email válido, email deve conter @ e .com";
             setTimeout(sumirMensagem, 3000);
-            finalizarAguardar();
+
             return false;
         } if (senhaVar.length <= 6) {
             cardErro.style.display = "block";
             mensagem_erro.innerHTML =
                 "Senha inválida, insira mais de 6 caracteres";
             setTimeout(sumirMensagem, 3000);
-            finalizarAguardar();
+
             return false;
         } if (senhaVar != confirmacaoSenhaVar || confirmacaoSenhaVar != senhaVar) {
             cardErro.style.display = "block";
@@ -144,7 +144,7 @@
                 "Confirmação de senha negada. Senhas diferentes";
 
             setTimeout(sumirMensagem, 3000);
-            finalizarAguardar();
+
             return false;
         }
 
@@ -158,7 +158,7 @@
                 nomeServer: nomeVar,
                 emailServer: emailVar,
                 senhaServer: senhaVar,
-                
+
 
             }),
         })
@@ -166,8 +166,8 @@
                 console.log("resposta: ", resposta);
 
                 if (resposta.ok) {
-                    
-                    
+
+
                     cardErro.style.display = "none";
                     alert("Cadastro realizado com sucesso! Redirecionando para a página de login")
 
@@ -176,7 +176,7 @@
                     }, 2000);
 
                     limparFormulario();
-                    finalizarAguardar();
+
                 } else {
                     throw "Houve um erro ao tentar realizar o cadastro!";
                 }
@@ -184,8 +184,8 @@
             .catch(function (resposta) {
                 console.log(`#ERRO: ${resposta}`);
 
-                
-                finalizarAguardar();
+
+
             });
 
         return false;

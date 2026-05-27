@@ -48,19 +48,17 @@
                 <input type="text" placeholder="Insira seu e-mail" id="ipt_login">
                 <input type="password" placeholder="Insira sua senha" id="ipt_senha">
                 <div class="botao">
-                <button type="button"  onclick="logar()">ENTRAR</button>
+                    <button type="button" onclick="logar()">ENTRAR</button>
                 </div>
                 <div class="naoTem">
                     <p><a href="cadastro.html" class="link">Ainda não tenho uma conta</a></p>
                 </div>
             </div>
 
-            <div id="div_aguardar" class="loading-div">
-                <img src="" id="loading-gif">
-            </div>
+
 
         </div>
-        <div id="div_erros_login"></div>
+
 
         <div class="card_erro" id="cardErro">
             <span id="mensagem_erro"></span>
@@ -72,14 +70,14 @@
         <img src="./assets/socrates.jpg" alt="">
     </div>
 
-     
+
 </body>
 
 </html>
 <script>
 
     function logar() {
-        aguardar();
+
 
         let emailVar = ipt_login.value;
         let senhaVar = ipt_senha.value;
@@ -88,9 +86,10 @@
             cardErro.style.display = "block"
             mensagem_erro.innerHTML = "Insira os dados no campo";
             setTimeout(sumirMensagem, 2000);
-            finalizarAguardar();
+
+
             return false;
-        
+
         }
         else {
             setTimeout(sumirMensagem, 2000)
@@ -107,7 +106,7 @@
             body: JSON.stringify({
                 emailServer: emailVar,
                 senhaServer: senhaVar,
-                
+
             })
         }).then(function (resposta) {
             console.log("ESTOU NO THEN DO logar()!")
@@ -121,11 +120,11 @@
                     sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.NOME_USUARIO = json.nome;
                     sessionStorage.ID_USUARIO = json.id;
-                    
+
                     alert("Login feito com sucesso!")
 
                     setTimeout(function () {
-                        window.location= "quiz.html";
+                        window.location = "quiz.html";
                     }, 1000); // apenas para exibir o loading
 
                 });
@@ -148,10 +147,10 @@
     }
 
     function sumirMensagem() {
-            cardErro.style.display = "none";
-            mensagem_erro.innerHTML = "";
+        cardErro.style.display = "none";
+        mensagem_erro.innerHTML = "";
 
-        }
+    }
 
 
 </script>
