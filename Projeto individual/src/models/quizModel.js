@@ -25,7 +25,7 @@ function obterDados(fkUsuario){
     JOIN pontuacao
     ON fkUsuario = idUsuario
     WHERE fkUsuario = ${fkUsuario}
-    ORDER BY id DESC;;` // utilizando view para chamar comandos SQL
+    ORDER BY id DESC;`
     
     console.log("Executando a instrucaoSql: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
